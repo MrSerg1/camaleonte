@@ -1,7 +1,7 @@
 .hero-carousel {
     --gap: 25px;
     --primary-color: #fff;
-    --accent-color: #ae3c68;
+    --accent-color: #00A888;
     --background-color: #03171d;
 }
 
@@ -48,7 +48,7 @@
 }
 .hero-carousel .swiper-slide-active{
     width: 600px;
-    border: 3px solid var(--primary-color)
+    border: 3px solid #604A98
 }
 .hero-carousel .swiper-slide img {
     position: absolute;
@@ -254,7 +254,7 @@
 .hero-carousel .slider-wrapper {
     width: 100%;
     overflow: hidden; /* Evita scrolls horizontales no deseados */
-    padding: 50px 0; /* Espacio para las sombras si las hay */
+    padding: 10px 0 50px; /* Espacio para las sombras si las hay */
 }
 
 /* ConfiguraciÃ³n para mÃ³viles (0px a 480px) */
