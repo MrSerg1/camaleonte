@@ -8,7 +8,8 @@ import logo from "@/assets/Camaleonte.png";
 const navigation = [
   { name: "Portafolio", href: "/portfolio" },
   { name: "Servicios", href: "/services" },
-  { name: "Nosotros", href: "/team" },
+  { name: "Nosotros", href: "/about" },
+  { name: "Equipo", href: "/team" },
   { name: "Contactanos", href: "/contact" },
 ];
 
