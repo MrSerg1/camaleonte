@@ -1,4 +1,4 @@
-export function Team() {
+export function Ourgear() {
   return (
     <div className="container page-container">
       <h1 className="page-title">Our Gear</h1>

@@ -285,7 +285,6 @@ ul {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80');
   background-size: cover;
   background-position: center;
 }
@@ -591,12 +590,18 @@ div.service-card{
   width: 100%;
   padding-top: 1.5rem;
   display: flex;
-  justify-content: center;
 }
 
 .service-cta {
-  width: 100%;
-  justify-content: center;
+border: 1px solid var(--color-green-camaleonte);
+border-radius: 10px;
+padding: 0.5rem;
+}
+.service-cta:hover{
+  background-color: var(--color-green-camaleonte);
+  color: var(--color-white);
+  opacity: 0.9;
+  transition: all 0.3s ease;
 }
 .services-page-full {
   width: 100%;
@@ -740,16 +745,54 @@ div.service-card{
 }
 
 .about-hero {
+  position: relative;
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80');
-  background-size: cover;
-  background-position: center;
   margin-top: -80px; /* Compensate for fixed header */
   padding-top: 80px;
+  overflow: hidden;
+}
+
+.about-hero-bg-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.about-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, var(--color-grafito));
+  pointer-events: none;
+  z-index: 3;
 }
 
 .about-subtitle {
@@ -788,10 +831,10 @@ div.service-card{
   height: 400px;
   background-color: var(--color-dark-gray);
   border-radius: 12px;
-  background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80');
   background-size: cover;
   background-position: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  object-fit: cover;
 }
 
 .mv-grid {

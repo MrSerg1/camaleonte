@@ -1,17 +1,17 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Clapperboard, Camera, MonitorPlay } from "lucide-react";
+import { ArrowRight, Clapperboard, Camera, MonitorPlay, MessageCircle } from "lucide-react";
 import snarkdown from 'snarkdown';
+import { Link } from "react-router-dom";
 
 const originalServices = [
   {
     icon: Clapperboard,
-    title: "Básico",
-    description: `Perfecto para proyectos pequeños y medianos:
+    title: "Esencial",
+    description: `Ideal para marcas en crecimiento que buscan una presencia profesional y tranquila:
 <br>
 - **3 publicaciones:** Fotos / Diseño. 
-- **2 carruseles:** Información / Diseño.
-- **3 Historias:** Públicaciones interactivas e historias destacadas.
+- **5 Historias:** Públicaciones interactivas e historias destacadas.
 - **4 Reels:** Video corto dinámico y atractivo.`
   },
   {
@@ -20,21 +20,19 @@ const originalServices = [
     description: `Ideal para marcas que buscan establecer su presencia digital y conectar con su audiencia de forma constante:
 
 - **4 Publicaciones**: Diseño de fotos y posts para un FEED estético.
-- **3 Carruseles**: Contenido estratégico para retener a tu audiencia.
-- **3 Stories**: Interacción diaria y gestión de historias destacadas.
-- **5 Reels**: Videos dinámicos para aumentar tu alcance orgánico.`
+- **6 Historias**: Interacción diaria y gestión de historias destacadas.
+- **6 Reels**: Videos dinámicos para aumentar tu alcance orgánico.`
   },
   {
     icon: MonitorPlay,
     title: "Pro",
-    description: `Domina tu nicho con una estrategia de contenido de alto impacto diseñada para maximizar tu alcance y autoridad:
+    description: `Domina tu nicho con una estrategia con base en el contenido de alto impacto, diseñada para maximizar tu alcance y autoridad:
 
-- **5 Publicaciones Premium**: Diseños estratégicos de alto nivel.
-- **4 Carruseles Educativos**: Contenido de valor para posicionarte como experto.
-- **5 Stories Interactivas**: Dinámicas para aumentar el engagement y retención.
-- **6 Reels de Alto Alcance**: Edición profesional con tendencias y audios virales.
-- **Optimización de Highlights**: Gestión de historias destacadas para ventas.`
-  }
+- **6 Publicaciones Premium**: Diseños estratégicos de alto nivel.
+- **7 Stories Interactivas**: Dinámicas para aumentar la conexión y retención de tu audiencia.
+- **7 Reels de Alto Alcance**: Edición profesional con tendencias y audios virales.
+`
+}
 ];
 
 const fullViewportServices = [
@@ -142,6 +140,12 @@ export function Services() {
                   className="service-description"
                   dangerouslySetInnerHTML={{__html: snarkdown(service.description) }}
                 />
+              
+                <div className="service-cta-wrapper">
+                  <Link to="/contact" className="service-cta">
+                    Personaliza tu plan
+                  </Link>
+                </div>
               </article>
             </div>
           ))}

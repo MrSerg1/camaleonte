@@ -1,10 +1,18 @@
 import { motion } from "framer-motion";
+import aboutHeroBg from "@/assets/aboutus.jpg"
 
 export function AboutUs() {
   return (
     <div className="about-us-page">
       <section className="about-hero">
-        <div className="container">
+        <img 
+        className="about-hero-bg-placeholder" 
+        src={aboutHeroBg} 
+        alt="About Us" 
+        />
+        <div className="about-hero-overlay" />
+        
+        <div className="container about-hero-content">
           <motion.h1 
             className="page-title"
             initial={{ opacity: 0, y: 20 }}
@@ -29,15 +37,19 @@ export function AboutUs() {
           <div className="about-content">
             <h2 className="section-title">Quiénes Somos</h2>
             <p>
-              En Camaleonte, somos un colectivo de creativos, estrategas y narradores visuales apasionados por contar historias que importan. No solo creamos contenido; construimos experiencias digitales que conectan marcas con personas.
+             En Camaleonte, somos un equipo compacto de tres especialistas en artes audiovisuales unidos por una misma pasión: contar historias que impactan. Al ser una estructura ágil, nos involucramos personalmente en cada fase del proceso, transformando ideas en experiencias digitales que conectan marcas con personas de manera real.
             </p>
             <p>
-              Nuestra filosofía se basa en la adaptabilidad y la innovación constante. Al igual que el camaleón, nos transformamos para enfrentar cada desafío, pero nuestra esencia de excelencia y creatividad permanece intacta.
+              Nuestra filosofía es la adaptabilidad. Como el camaleón, evolucionamos con cada proyecto para dominar las tendencias del algoritmo, manteniendo siempre una esencia de excelencia técnica y creatividad innegociable.
             </p>
           </div>
           <div className="about-image">
             {/* Placeholder for image */}
-            <div className="image-placeholder" />
+            <img 
+            className="image-placeholder"
+            src={aboutHeroBg}
+            alt="About Us"
+            />
           </div>
         </div>
       </section>

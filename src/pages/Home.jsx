@@ -47,7 +47,7 @@ export function Home() {
       {/* Featured Section Placeholder */}
       <section className="featured-section">
         <div className="container">
-          <h2 className="section-title">Trabajos destacados</h2>
+          <h2 className="section-title">Proyectos destacados</h2>
           <div className="featured-grid">
             {/* Placeholders */}
             <div className="featured-placeholder" />

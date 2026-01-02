@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Home } from "@/pages/Home";
 import { Portfolio } from "@/pages/Portfolio";
 import { Services } from "@/pages/Services";
-import { Team } from "@/pages/Team";
+import { Ourgear } from "@/pages/Ourgear";
 import { Contact } from "@/pages/Contact";
 import { AboutUs } from "@/pages/AboutUs";
 
@@ -17,7 +17,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/team" element={<Team />} />
+          <Route path="/ourgear" element={<Ourgear />} />
         </Routes>
       </Layout>
     </Router>

@@ -18,7 +18,8 @@ export function Footer() {
           <ul className="footer-links">
             <li><Link to="/portfolio" className="footer-link">Portafolio</Link></li>
             <li><Link to="/services" className="footer-link">Servicios</Link></li>
-            <li><Link to="/team" className="footer-link">Nosotros</Link></li>
+            <li><Link to="/about" className="footer-link">Nosotros</Link></li>
+            <li><Link to="/team" className="footer-link">Equipo</Link></li>
             <li><Link to="/contact" className="footer-link">Contactanos</Link></li>
           </ul>
         </div>
