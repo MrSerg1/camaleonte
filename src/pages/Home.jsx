@@ -8,9 +8,7 @@ export function Home() {
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="hero-overlay" />
-        {/* Placeholder for Video Background */}
-        <div className="hero-bg" style={{ backgroundImage: `url(${portadaImg})` }} />
+        <img className="hero-bg" src = {portadaImg} alt="Portada" />
         
         <div className="container hero-content">
           <motion.h1 
