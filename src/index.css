@@ -454,57 +454,6 @@ ul {
   max-width: 42rem;
 }
 
-/* Portfolio */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.portfolio-item {
-  aspect-ratio: 4/3;
-  background-color: var(--color-dark-gray);
-  border-radius: 0.5rem;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.portfolio-item:hover {
-  box-shadow: 0 0 0 2px var(--color-green-camaleonte);
-}
-
-.portfolio-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.portfolio-item:hover .portfolio-overlay {
-  opacity: 1;
-}
-
-.project-title {
-  color: var(--color-white);
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  letter-spacing: 0.1em;
-  display:flex;
-  justify-content: center;
-}
-
 /* Services Cards */
 .services-page{
   width: 80%;
@@ -1100,6 +1049,5 @@ padding: 0.5rem;
 .submit-button:hover {
   background-color: #604A98; /* Slightly darker */
 }
-
 
 
