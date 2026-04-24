@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Clapperboard, Camera, MonitorPlay, MessageCircle } from "lucide-react";
+import { ArrowRight, Clapperboard, Camera, MonitorPlay } from "lucide-react";
 import snarkdown from 'snarkdown';
 import { Link } from "react-router-dom";
 

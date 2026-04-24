@@ -122,3 +122,7 @@ dist
 
 # Trae
 .trae
+
+# Agent instruction files
+AGENTS.md
+agents.md

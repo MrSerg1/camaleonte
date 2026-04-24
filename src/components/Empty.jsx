@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils'
-
 // Empty component
 export default function Empty() {
   return (
