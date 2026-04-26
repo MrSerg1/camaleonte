@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Clapperboard, Camera, MonitorPlay } from "lucide-react";
 import snarkdown from 'snarkdown';
 import { Link } from "react-router-dom";
+import { ROUTES } from "@/lib/routes";
 
 const originalServices = [
   {
@@ -142,7 +143,7 @@ export function Services() {
                 />
               
                 <div className="service-cta-wrapper">
-                  <Link to="/contact" className="service-cta">
+                  <Link to={ROUTES.contact} className="service-cta">
                     Personaliza tu plan
                   </Link>
                 </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ROUTES } from "@/lib/routes";
 
 export function Footer() {
   return (
@@ -16,11 +17,10 @@ export function Footer() {
         <div className="footer-section">
           <h4>Navegación</h4>
           <ul className="footer-links">
-            <li><Link to="/portfolio" className="footer-link">Portafolio</Link></li>
-            <li><Link to="/services" className="footer-link">Servicios</Link></li>
-            <li><Link to="/about" className="footer-link">Nosotros</Link></li>
-            <li><Link to="/team" className="footer-link">Equipo</Link></li>
-            <li><Link to="/contact" className="footer-link">Contactanos</Link></li>
+            <li><Link to={ROUTES.portfolio} className="footer-link">Portafolio</Link></li>
+            <li><Link to={ROUTES.services} className="footer-link">Servicios</Link></li>
+            <li><Link to={ROUTES.about} className="footer-link">Nosotros</Link></li>
+            <li><Link to={ROUTES.contact} className="footer-link">Contacto</Link></li>
           </ul>
         </div>
 

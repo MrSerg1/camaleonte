@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import aboutHeroBg from "@/assets/aboutus.jpg"
+import aboutHeroBg from "@/assets/aboutus.webp"
 
 export function AboutUs() {
   return (

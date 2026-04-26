@@ -6,18 +6,19 @@ import { Services } from "@/pages/Services";
 // import { Ourgear } from "@/pages/Ourgear";
 import { Contact } from "@/pages/Contact";
 import { AboutUs } from "@/pages/AboutUs";
+import { ROUTES } from "@/lib/routes";
 
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/ourgear" element={<Ourgear />} /> */}
+          <Route path={ROUTES.home} element={<Home />} />
+          <Route path={ROUTES.about} element={<AboutUs />} />
+          <Route path={ROUTES.portfolio} element={<Portfolio />} />
+          <Route path={ROUTES.services} element={<Services />} />
+          <Route path={ROUTES.contact} element={<Contact />} />
+          {/* <Route path="/equipo" element={<Ourgear />} /> */}
         </Routes>
       </Layout>
     </Router>

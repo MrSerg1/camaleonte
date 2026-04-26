@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import portadaImg from "@/assets/portada.jpg";
+import portadaImg from "@/assets/portada.webp";
+import { ROUTES } from "@/lib/routes";
 
 export function Home() {
   return (
@@ -33,7 +34,7 @@ export function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Link to="/portfolio" className="cta-button">
+            <Link to={ROUTES.portfolio} className="cta-button">
               <Play size={20} className="fill-current" />
               Mas Trabajos
             </Link>

@@ -126,3 +126,4 @@ dist
 # Agent instruction files
 AGENTS.md
 agents.md
+SESSION_HANDOFF.md

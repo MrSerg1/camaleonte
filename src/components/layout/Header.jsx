@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { ROUTES } from "@/lib/routes";
 
-import logo from "@/assets/Camaleonte.png";
+import logo from "@/assets/Camaleonte.webp";
 
 const navigation = [
-  { name: "Portafolio", href: "/portfolio" },
-  { name: "Servicios", href: "/services" },
-  { name: "Nosotros", href: "/about" },
-  // { name: "Equipo", href: "/ourgear" },
-  { name: "Contactanos", href: "/contact" },
+  { name: "Portafolio", href: ROUTES.portfolio },
+  { name: "Servicios", href: ROUTES.services },
+  { name: "Nosotros", href: ROUTES.about },
+  // { name: "Equipo", href: "/equipo" },
+  { name: "Contacto", href: ROUTES.contact },
 ];
 
 export function Header() {
@@ -52,7 +53,7 @@ export function Header() {
             </Link>
           ))}
           <Link
-            to="/contact"
+            to={ROUTES.contact}
             className="quote-button"
           >
             Crear idea
