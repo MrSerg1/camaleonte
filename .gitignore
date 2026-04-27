@@ -127,3 +127,6 @@ dist
 AGENTS.md
 agents.md
 SESSION_HANDOFF.md
+RECOVER_SESSION.md
+skills-lock.json
+.agents
