@@ -486,9 +486,23 @@ ul {
   width: 100%;
   height: 100%;
   padding: 1rem;
+  isolation: isolate;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
     linear-gradient(135deg, rgba(96, 74, 152, 0.18), rgba(0, 168, 136, 0.08));
+}
+
+.portfolio-media-cover,
+.portfolio-media-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-media-cover {
+  z-index: -2;
 }
 
 .portfolio-media-card-frame-video {
@@ -503,11 +517,7 @@ ul {
 }
 
 .portfolio-media-video {
-  position: absolute;
-  inset: 0 -10% 0 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  z-index: -2;
   object-position: center;
 }
 
@@ -535,23 +545,23 @@ ul {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 48%);
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 7, 7, 0.02) 0%, rgba(6, 7, 7, 0.42) 100%),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 48%);
   pointer-events: none;
 }
 
-.portfolio-media-card-label {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.portfolio-media-card-frame-photo::after,
+.portfolio-media-card-frame-branding::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(4, 5, 5, 0.05) 0%, rgba(4, 5, 5, 0.72) 100%),
+    linear-gradient(135deg, rgba(10, 12, 11, 0.08), rgba(95, 255, 202, 0.08));
+  pointer-events: none;
 }
 
 .portfolio-intro-copy {
@@ -690,6 +700,228 @@ ul {
 
   .portfolio-intro-description {
     font-size: 0.88rem;
+  }
+}
+
+/* Portfolio section gap */
+.portfolio-section + .portfolio-section {
+  margin-top: 0.5rem;
+}
+
+/* Portfolio Grids B, C, D – 3 cols × 4 rows */
+.portfolio-featured-grid--b,
+.portfolio-featured-grid--c,
+.portfolio-featured-grid--d {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+/* Grid B card positions */
+.portfolio-media-card-b-left-tall {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+}
+.portfolio-media-card-b-top-right {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+}
+.portfolio-media-card-b-center-mid {
+  grid-column: 2;
+  grid-row: 2;
+}
+.portfolio-media-card-b-right-tall {
+  grid-column: 3;
+  grid-row: 2 / span 2;
+}
+.portfolio-media-card-b-center-tall {
+  grid-column: 2;
+  grid-row: 3 / span 2;
+}
+.portfolio-media-card-b-right-bottom {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+/* Grid C card positions */
+.portfolio-media-card-c-top-left {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.portfolio-media-card-c-top-right {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+}
+.portfolio-media-card-c-center-mid {
+  grid-column: 2;
+  grid-row: 2;
+}
+.portfolio-media-card-c-right-tall {
+  grid-column: 3;
+  grid-row: 2 / span 3;
+}
+.portfolio-media-card-c-bottom-left {
+  grid-column: 1;
+  grid-row: 3 / span 2;
+}
+.portfolio-media-card-c-center-tall {
+  grid-column: 2;
+  grid-row: 3 / span 2;
+}
+
+/* Grid D card positions */
+.portfolio-media-card-d-top-left {
+  grid-column: 1;
+  grid-row: 1;
+}
+.portfolio-media-card-d-top-center {
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 2;
+}
+.portfolio-media-card-d-mid-left {
+  grid-column: 1;
+  grid-row: 2 / span 3;
+}
+.portfolio-media-card-d-mid-center {
+  grid-column: 2;
+  grid-row: 3 / span 2;
+}
+.portfolio-media-card-d-mid-right {
+  grid-column: 3;
+  grid-row: 3;
+}
+.portfolio-media-card-d-bot-right {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+/* Quote card */
+.portfolio-media-card-frame-quote {
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 1.5rem;
+  background-color: #1d1f1e;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.portfolio-media-card-frame-quote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 10, 9, 0.88);
+  pointer-events: none;
+}
+
+.portfolio-quote-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 2.2vw, 1.8rem);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  text-wrap: balance;
+  color: var(--color-white);
+}
+
+/* CTA card */
+.portfolio-media-card-frame-cta {
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 1.5rem;
+  background-color: #1d1f1e;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  transition: filter 0.25s ease;
+}
+
+.portfolio-media-card-frame-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 168, 136, 0.6);
+  pointer-events: none;
+  transition: background 0.25s ease;
+}
+
+.portfolio-media-card-frame-cta:hover::before {
+  background: rgba(0, 168, 136, 0.78);
+}
+
+.portfolio-cta-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+}
+
+.portfolio-cta-label {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.2vw, 1.65rem);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  text-wrap: balance;
+  color: var(--color-white);
+}
+
+.portfolio-cta-action {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 767px) {
+  .portfolio-featured-grid--b,
+  .portfolio-featured-grid--c,
+  .portfolio-featured-grid--d {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    min-height: auto;
+  }
+
+  .portfolio-media-card-b-left-tall,
+  .portfolio-media-card-b-top-right,
+  .portfolio-media-card-b-center-mid,
+  .portfolio-media-card-b-right-tall,
+  .portfolio-media-card-b-center-tall,
+  .portfolio-media-card-b-right-bottom,
+  .portfolio-media-card-c-top-left,
+  .portfolio-media-card-c-top-right,
+  .portfolio-media-card-c-center-mid,
+  .portfolio-media-card-c-right-tall,
+  .portfolio-media-card-c-bottom-left,
+  .portfolio-media-card-c-center-tall,
+  .portfolio-media-card-d-top-left,
+  .portfolio-media-card-d-top-center,
+  .portfolio-media-card-d-mid-left,
+  .portfolio-media-card-d-mid-center,
+  .portfolio-media-card-d-mid-right,
+  .portfolio-media-card-d-bot-right {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 14rem;
+  }
+
+  .portfolio-media-card-b-left-tall,
+  .portfolio-media-card-b-center-tall,
+  .portfolio-media-card-c-right-tall,
+  .portfolio-media-card-c-center-tall,
+  .portfolio-media-card-d-top-center,
+  .portfolio-media-card-d-mid-left,
+  .portfolio-media-card-d-mid-center {
+    min-height: 18rem;
   }
 }
 
