@@ -6,6 +6,47 @@
 - Record only verified facts that help the next session continue quickly.
 - Include: date, branch/push status, commands verified, important decisions, main changes, and next recommended tasks.
 
+## 2026-04-26
+
+### Repo state
+- Branch: `portafolio`
+- Push status: pushed to `origin/portafolio` at end of session
+
+### Commands verified
+- `pnpm lint`
+- `pnpm build`
+
+### Key decisions
+- `PortfolioVideo` implemented as a React component (not Media Fragments URI): `IntersectionObserver` at threshold 0.4 starts/resets playback on enter, pauses and resets to `currentTime = 0` on exit. `timeupdate` event stops at `stopAt` seconds (default 20). No `loop`.
+- S1 videos migrated from plain `<video autoPlay loop>` to `<PortfolioVideo>` to enforce the same playback rules.
+- Grids B, C, D added as modifier classes on `portfolio-featured-grid` (`--b`, `--c`, `--d`), each using 4 rows vs. the existing 5-row Grid A.
+- Grid A reused for S5 and S9 without the intro card (top-wide slot holds media).
+- Quote cards use `portfolio-media-card-frame-quote` with `portafolioback.webp` + a dense dark overlay and Bebas Neue text.
+- CTA cards use `portfolio-media-card-frame-cta` rendered as `<Link>` directly; green tinted overlay with hover transition.
+- JSX is explicit (no data arrays) per previous decision.
+
+### Main changes completed
+- Created `src/components/portfolio/PortfolioVideo.jsx`.
+- Added Grid B/C/D position classes, quote/CTA card styles, section gap, and mobile resets to `src/index.css`.
+- Rewrote `src/pages/Portfolio.jsx` with 11 sections covering all available media, 8 quote cards, and 3 CTA cards.
+
+### Commits created
+- `feat: add PortfolioVideo component with IntersectionObserver playback`
+- `feat: build 11-section bento portfolio with grids A–D, quotes and CTAs`
+
+### Open context
+- `reel-tirads-v4-ruzzi-cuando.webm` is referenced in S3 (c-top-right) but the file is missing from `public/portfolio/videos/`. That card will be black until the file is added.
+- `v1.webm` (S11 c-top-right) content is unverified; user to check after push.
+- `stopAt` for every video is still the default 20 s; adjust per-video by passing the `stopAt` prop.
+- Session tool artifacts remain untracked: `.agents/`, `RECOVER_SESSION.md`, `skills-lock.json`.
+
+### Recommended next tasks
+- Add the missing `reel-tirads-v4-ruzzi-cuando.webm` to `public/portfolio/videos/`.
+- Verify `v1.webm` content and update its `alt` / position if needed.
+- Review per-video `stopAt` values once the page is viewed in browser.
+- Fine-tune card proportions, quote copy, or grid assignments as needed.
+- Consider whether the empty 5th row in Grid A (S1, S5, S9) should be removed or filled.
+
 ## 2026-04-25
 
 ### Repo state
