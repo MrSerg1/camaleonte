@@ -466,9 +466,9 @@ ul {
 .portfolio-featured-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(14rem, 1fr));
   gap: 0.5rem;
-  min-height: clamp(34rem, 82vh, 56rem);
+  min-height: clamp(40rem, 100vh, 72rem);
 }
 
 .portfolio-media-card {
@@ -705,14 +705,15 @@ ul {
 
 /* Portfolio section gap */
 .portfolio-section + .portfolio-section {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 /* Portfolio Grids B, C, D – 3 cols × 4 rows */
 .portfolio-featured-grid--b,
 .portfolio-featured-grid--c,
 .portfolio-featured-grid--d {
-  grid-template-rows: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(14rem, 1fr));
+  min-height: clamp(44rem, 110vh, 80rem);
 }
 
 /* Grid B card positions */
