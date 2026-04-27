@@ -105,11 +105,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-b-top-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-tengo-tiroides-bad-dreams-teddy-swims.webm"
-                />
+              <div
+                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <p className="portfolio-quote-text">Crear no es solo producir. Es dejar una huella.</p>
               </div>
             </article>
 
@@ -126,13 +126,10 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-b-right-tall">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
-                <img
-                  alt="Fotografía de estudio"
-                  className="portfolio-media-cover"
-                  decoding="async"
-                  loading="lazy"
-                  src="/portfolio/images/foto-7-final.webp"
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-tengo-tiroides-bad-dreams-teddy-swims.webm"
                 />
               </div>
             </article>
@@ -147,11 +144,14 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-b-right-bottom">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">Crear no es solo producir. Es dejar una huella.</p>
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
+                <img
+                  alt="Fotografía de estudio"
+                  className="portfolio-media-cover"
+                  decoding="async"
+                  loading="lazy"
+                  src="/portfolio/images/foto-7-final.webp"
+                />
               </div>
             </article>
 
@@ -175,11 +175,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-top-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-tirads-v4-ruzzi-cuando.webm"
-                />
+              <div
+                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <p className="portfolio-quote-text">Cada encuadre cuenta lo que las palabras no pueden.</p>
               </div>
             </article>
 
@@ -220,11 +220,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-center-tall">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">Cada encuadre cuenta lo que las palabras no pueden.</p>
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-tirads-v4-ruzzi-cuando.webm"
+                />
               </div>
             </article>
 
@@ -248,12 +248,16 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-d-top-center">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-octubre-rosa-kodaline-all-i-want-piano.webm"
-                />
-              </div>
+              <Link
+                to={ROUTES.contact}
+                className="portfolio-media-card-frame portfolio-media-card-frame-cta"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <div className="portfolio-cta-content">
+                  <span className="portfolio-cta-label">¿Empezamos algo juntos?</span>
+                  <span className="portfolio-cta-action">Contactar</span>
+                </div>
+              </Link>
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-d-mid-left">
@@ -280,26 +284,13 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-d-mid-right">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">Movimiento e imagen al servicio de tu marca.</p>
+            <article className="portfolio-media-card portfolio-media-card-d-right-tall">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-octubre-rosa-kodaline-all-i-want-piano.webm"
+                />
               </div>
-            </article>
-
-            <article className="portfolio-media-card portfolio-media-card-d-bot-right">
-              <Link
-                to={ROUTES.contact}
-                className="portfolio-media-card-frame portfolio-media-card-frame-cta"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <div className="portfolio-cta-content">
-                  <span className="portfolio-cta-label">¿Empezamos algo juntos?</span>
-                  <span className="portfolio-cta-action">Contactar</span>
-                </div>
-              </Link>
             </article>
 
           </div>
@@ -322,11 +313,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-top-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-28-dic-midnight-mood.webm"
-                />
+              <div
+                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <p className="portfolio-quote-text">El momento preciso, capturado sin concesiones.</p>
               </div>
             </article>
 
@@ -364,11 +355,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-center-tall">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">El momento preciso, capturado sin concesiones.</p>
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-28-dic-midnight-mood.webm"
+                />
               </div>
             </article>
 
@@ -392,11 +383,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-b-top-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-braquimetatarsia.webm"
-                />
+              <div
+                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <p className="portfolio-quote-text">Contenido que conecta, marca que trasciende.</p>
               </div>
             </article>
 
@@ -413,13 +404,10 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-b-right-tall">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-branding">
-                <img
-                  alt="Banner de diseño para campaña de marca"
-                  className="portfolio-media-cover"
-                  decoding="async"
-                  loading="lazy"
-                  src="/portfolio/images/banner-natalia.webp"
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-braquimetatarsia.webm"
                 />
               </div>
             </article>
@@ -437,11 +425,14 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-b-right-bottom">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">Contenido que conecta, marca que trasciende.</p>
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-branding">
+                <img
+                  alt="Banner de diseño para campaña de marca"
+                  className="portfolio-media-cover"
+                  decoding="async"
+                  loading="lazy"
+                  src="/portfolio/images/banner-natalia.webp"
+                />
               </div>
             </article>
 
@@ -465,12 +456,16 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-top-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-detectar.webm"
-                />
-              </div>
+              <Link
+                to={ROUTES.contact}
+                className="portfolio-media-card-frame portfolio-media-card-frame-cta"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <div className="portfolio-cta-content">
+                  <span className="portfolio-cta-label">Tu marca merece este nivel</span>
+                  <span className="portfolio-cta-action">Hablemos</span>
+                </div>
+              </Link>
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-center-mid">
@@ -510,16 +505,12 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-center-tall">
-              <Link
-                to={ROUTES.contact}
-                className="portfolio-media-card-frame portfolio-media-card-frame-cta"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <div className="portfolio-cta-content">
-                  <span className="portfolio-cta-label">Tu marca merece este nivel</span>
-                  <span className="portfolio-cta-action">Hablemos</span>
-                </div>
-              </Link>
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-detectar.webm"
+                />
+              </div>
             </article>
 
           </div>
@@ -542,11 +533,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-d-top-center">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/audoc-presentation.webm"
-                />
+              <div
+                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <p className="portfolio-quote-text">Detrás de cada imagen hay una decisión creativa.</p>
               </div>
             </article>
 
@@ -574,24 +565,12 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-d-mid-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-branding">
-                <img
-                  alt="Pieza visual de campaña para fecha especial"
-                  className="portfolio-media-cover"
-                  decoding="async"
-                  loading="lazy"
-                  src="/portfolio/images/audoc-san-valentin.webp"
+            <article className="portfolio-media-card portfolio-media-card-d-right-tall">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/audoc-presentation.webm"
                 />
-              </div>
-            </article>
-
-            <article className="portfolio-media-card portfolio-media-card-d-bot-right">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">Detrás de cada imagen hay una decisión creativa.</p>
               </div>
             </article>
 
@@ -761,11 +740,11 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-top-right">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/v1.webm"
-                />
+              <div
+                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
+                style={{ backgroundImage: `url(${portfolioBackImg})` }}
+              >
+                <p className="portfolio-quote-text">Tu historia merece ser contada con toda su fuerza.</p>
               </div>
             </article>
 
@@ -794,15 +773,6 @@ export function Portfolio() {
             </article>
 
             <article className="portfolio-media-card portfolio-media-card-c-bottom-left">
-              <div
-                className="portfolio-media-card-frame portfolio-media-card-frame-quote"
-                style={{ backgroundImage: `url(${portfolioBackImg})` }}
-              >
-                <p className="portfolio-quote-text">Tu historia merece ser contada con toda su fuerza.</p>
-              </div>
-            </article>
-
-            <article className="portfolio-media-card portfolio-media-card-c-center-tall">
               <Link
                 to={ROUTES.contact}
                 className="portfolio-media-card-frame portfolio-media-card-frame-cta"
@@ -813,6 +783,15 @@ export function Portfolio() {
                   <span className="portfolio-cta-action">Contáctanos</span>
                 </div>
               </Link>
+            </article>
+
+            <article className="portfolio-media-card portfolio-media-card-c-center-tall">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/v1.webm"
+                />
+              </div>
             </article>
 
           </div>

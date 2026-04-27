@@ -466,7 +466,7 @@ ul {
 .portfolio-featured-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(4, minmax(14rem, 1fr));
+  grid-template-rows: repeat(5, minmax(14rem, 1fr));
   gap: 0.5rem;
   min-height: clamp(40rem, 100vh, 72rem);
 }
@@ -708,18 +708,18 @@ ul {
   margin-top: 1rem;
 }
 
-/* Portfolio Grids B, C, D – 3 cols × 4 rows */
+/* Portfolio Grids B, C, D – 3 cols × 5 rows */
 .portfolio-featured-grid--b,
 .portfolio-featured-grid--c,
 .portfolio-featured-grid--d {
-  grid-template-rows: repeat(4, minmax(14rem, 1fr));
+  grid-template-rows: repeat(5, minmax(14rem, 1fr));
   min-height: clamp(44rem, 110vh, 80rem);
 }
 
 /* Grid B card positions */
 .portfolio-media-card-b-left-tall {
   grid-column: 1;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 5;
 }
 .portfolio-media-card-b-top-right {
   grid-column: 2 / span 2;
@@ -731,15 +731,15 @@ ul {
 }
 .portfolio-media-card-b-right-tall {
   grid-column: 3;
-  grid-row: 2 / span 2;
+  grid-row: 2 / span 3;
 }
 .portfolio-media-card-b-center-tall {
   grid-column: 2;
-  grid-row: 3 / span 2;
+  grid-row: 3 / span 3;
 }
 .portfolio-media-card-b-right-bottom {
   grid-column: 3;
-  grid-row: 4;
+  grid-row: 5;
 }
 
 /* Grid C card positions */
@@ -757,15 +757,15 @@ ul {
 }
 .portfolio-media-card-c-right-tall {
   grid-column: 3;
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 4;
 }
 .portfolio-media-card-c-bottom-left {
   grid-column: 1;
-  grid-row: 3 / span 2;
+  grid-row: 3 / span 3;
 }
 .portfolio-media-card-c-center-tall {
   grid-column: 2;
-  grid-row: 3 / span 2;
+  grid-row: 3 / span 3;
 }
 
 /* Grid D card positions */
@@ -779,68 +779,15 @@ ul {
 }
 .portfolio-media-card-d-mid-left {
   grid-column: 1;
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 4;
 }
 .portfolio-media-card-d-mid-center {
   grid-column: 2;
-  grid-row: 3 / span 2;
+  grid-row: 3 / span 3;
 }
-.portfolio-media-card-d-mid-right {
+.portfolio-media-card-d-right-tall {
   grid-column: 3;
-  grid-row: 3;
-}
-.portfolio-media-card-d-bot-right {
-  grid-column: 3;
-  grid-row: 4;
-}
-
-/* ── Horizontal video banner (between sections) ── */
-.portfolio-video-banner {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #111;
-  aspect-ratio: 16 / 9;
-}
-
-.portfolio-section + .portfolio-video-banner,
-.portfolio-video-banner + .portfolio-section {
-  margin-top: 1rem;
-}
-
-/* Grid A – wide variant: no right-column (S1) */
-.portfolio-featured-grid--a-wide .portfolio-media-card-top-wide {
-  grid-column: 1 / span 3;
-}
-.portfolio-featured-grid--a-wide .portfolio-media-card-left-tall {
-  grid-row: 2 / span 3;
-}
-.portfolio-featured-grid--a-wide .portfolio-media-card-center-top {
-  grid-column: 2 / span 2;
-}
-.portfolio-featured-grid--a-wide .portfolio-media-card-center-tall {
-  grid-column: 2 / span 2;
-}
-
-/* Grid B – no top-right variant (S10) */
-.portfolio-featured-grid--b-no-top .portfolio-media-card-b-center-mid {
-  grid-row: 1 / span 2;
-}
-.portfolio-featured-grid--b-no-top .portfolio-media-card-b-right-tall {
-  grid-row: 1 / span 3;
-}
-
-/* Grid D – no top-center variant (S8) */
-.portfolio-featured-grid--d-no-top .portfolio-media-card-d-top-left {
-  grid-column: 1 / span 3;
-}
-.portfolio-featured-grid--d-no-top .portfolio-media-card-d-mid-center {
-  grid-row: 2 / span 3;
-}
-.portfolio-featured-grid--d-no-top .portfolio-media-card-d-mid-right {
-  grid-row: 2 / span 2;
+  grid-row: 3 / span 3;
 }
 
 /* Quote card */
@@ -957,8 +904,7 @@ ul {
   .portfolio-media-card-d-top-center,
   .portfolio-media-card-d-mid-left,
   .portfolio-media-card-d-mid-center,
-  .portfolio-media-card-d-mid-right,
-  .portfolio-media-card-d-bot-right {
+  .portfolio-media-card-d-right-tall {
     grid-column: auto;
     grid-row: auto;
     min-height: 14rem;
@@ -970,23 +916,9 @@ ul {
   .portfolio-media-card-c-center-tall,
   .portfolio-media-card-d-top-center,
   .portfolio-media-card-d-mid-left,
-  .portfolio-media-card-d-mid-center {
+  .portfolio-media-card-d-mid-center,
+  .portfolio-media-card-d-right-tall {
     min-height: 18rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .portfolio-featured-grid--a-wide .portfolio-media-card-top-wide,
-  .portfolio-featured-grid--a-wide .portfolio-media-card-left-tall,
-  .portfolio-featured-grid--a-wide .portfolio-media-card-center-top,
-  .portfolio-featured-grid--a-wide .portfolio-media-card-center-tall,
-  .portfolio-featured-grid--b-no-top .portfolio-media-card-b-center-mid,
-  .portfolio-featured-grid--b-no-top .portfolio-media-card-b-right-tall,
-  .portfolio-featured-grid--d-no-top .portfolio-media-card-d-top-left,
-  .portfolio-featured-grid--d-no-top .portfolio-media-card-d-mid-center,
-  .portfolio-featured-grid--d-no-top .portfolio-media-card-d-mid-right {
-    grid-column: auto;
-    grid-row: auto;
   }
 }
 
