@@ -10,7 +10,7 @@ export function Portfolio() {
 
         {/* ── Section 1 – Grid A ── */}
         <section className="portfolio-section" aria-label="Sección 1 del portafolio">
-          <div className="portfolio-featured-grid portfolio-featured-grid--a-wide">
+          <div className="portfolio-featured-grid">
 
             <article className="portfolio-media-card portfolio-media-card-top-wide">
               <div
@@ -43,6 +43,15 @@ export function Portfolio() {
               </div>
             </article>
 
+            <article className="portfolio-media-card portfolio-media-card-right-column">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/hero-camaleonte.webm"
+                />
+              </div>
+            </article>
+
             <article className="portfolio-media-card portfolio-media-card-center-top">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-branding">
                 <img
@@ -64,16 +73,20 @@ export function Portfolio() {
               </div>
             </article>
 
+            <article className="portfolio-media-card portfolio-media-card-left-bottom">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-branding">
+                <img
+                  alt="Muestra de identidad visual y branding para una marca"
+                  className="portfolio-media-cover"
+                  decoding="async"
+                  loading="lazy"
+                  src="/portfolio/images/brand-odi.webp"
+                />
+              </div>
+            </article>
+
           </div>
         </section>
-
-        {/* ── Banner: hero-camaleonte.webm (16:9) ── */}
-        <div className="portfolio-video-banner">
-          <PortfolioVideo
-            className="portfolio-media-video"
-            src="/portfolio/videos/hero-camaleonte.webm"
-          />
-        </div>
 
         {/* ── Section 2 – Grid B ── */}
         <section className="portfolio-section" aria-label="Sección 2 del portafolio">
@@ -292,20 +305,11 @@ export function Portfolio() {
           </div>
         </section>
 
-        {/* ── Section 5 – Grid A (sin intro) ── */}
+        {/* ── Section 5 – Grid C ── */}
         <section className="portfolio-section" aria-label="Sección 5 del portafolio">
-          <div className="portfolio-featured-grid">
+          <div className="portfolio-featured-grid portfolio-featured-grid--c">
 
-            <article className="portfolio-media-card portfolio-media-card-top-wide">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-28-dic-midnight-mood.webm"
-                />
-              </div>
-            </article>
-
-            <article className="portfolio-media-card portfolio-media-card-left-tall">
+            <article className="portfolio-media-card portfolio-media-card-c-top-left">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Fotografía de producción para proyecto visual"
@@ -317,16 +321,16 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-right-column">
+            <article className="portfolio-media-card portfolio-media-card-c-top-right">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
                 <PortfolioVideo
                   className="portfolio-media-video"
-                  src="/portfolio/videos/reel-javier-prp.webm"
+                  src="/portfolio/videos/reel-28-dic-midnight-mood.webm"
                 />
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-center-top">
+            <article className="portfolio-media-card portfolio-media-card-c-center-mid">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Story de contenido educativo para redes"
@@ -338,7 +342,16 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-center-tall">
+            <article className="portfolio-media-card portfolio-media-card-c-right-tall">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-javier-prp.webm"
+                />
+              </div>
+            </article>
+
+            <article className="portfolio-media-card portfolio-media-card-c-bottom-left">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Imagen de contenido visual para proyecto"
@@ -350,7 +363,7 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-left-bottom">
+            <article className="portfolio-media-card portfolio-media-card-c-center-tall">
               <div
                 className="portfolio-media-card-frame portfolio-media-card-frame-quote"
                 style={{ backgroundImage: `url(${portfolioBackImg})` }}
@@ -514,7 +527,7 @@ export function Portfolio() {
 
         {/* ── Section 8 – Grid D ── */}
         <section className="portfolio-section" aria-label="Sección 8 del portafolio">
-          <div className="portfolio-featured-grid portfolio-featured-grid--d portfolio-featured-grid--d-no-top">
+          <div className="portfolio-featured-grid portfolio-featured-grid--d">
 
             <article className="portfolio-media-card portfolio-media-card-d-top-left">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
@@ -524,6 +537,15 @@ export function Portfolio() {
                   decoding="async"
                   loading="lazy"
                   src="/portfolio/images/6.webp"
+                />
+              </div>
+            </article>
+
+            <article className="portfolio-media-card portfolio-media-card-d-top-center">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/audoc-presentation.webm"
                 />
               </div>
             </article>
@@ -576,19 +598,20 @@ export function Portfolio() {
           </div>
         </section>
 
-        {/* ── Banner: audoc-presentation.webm (16:9) ── */}
-        <div className="portfolio-video-banner">
-          <PortfolioVideo
-            className="portfolio-media-video"
-            src="/portfolio/videos/audoc-presentation.webm"
-          />
-        </div>
-
-        {/* ── Section 9 – Grid A (sin intro) ── */}
+        {/* ── Section 9 – Grid B ── */}
         <section className="portfolio-section" aria-label="Sección 9 del portafolio">
-          <div className="portfolio-featured-grid">
+          <div className="portfolio-featured-grid portfolio-featured-grid--b">
 
-            <article className="portfolio-media-card portfolio-media-card-top-wide">
+            <article className="portfolio-media-card portfolio-media-card-b-left-tall">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/reel-cuales-son-los-riesgos-de-la-cirugia-tiroides.webm"
+                />
+              </div>
+            </article>
+
+            <article className="portfolio-media-card portfolio-media-card-b-top-right">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Fotografía grupal para proyecto corporativo"
@@ -600,7 +623,7 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-left-tall">
+            <article className="portfolio-media-card portfolio-media-card-b-center-mid">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Imagen de producción visual"
@@ -612,16 +635,7 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-right-column">
-              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
-                <PortfolioVideo
-                  className="portfolio-media-video"
-                  src="/portfolio/videos/reel-cuales-son-los-riesgos-de-la-cirugia-tiroides.webm"
-                />
-              </div>
-            </article>
-
-            <article className="portfolio-media-card portfolio-media-card-center-top">
+            <article className="portfolio-media-card portfolio-media-card-b-right-tall">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Imagen de producción para contenido de marca"
@@ -633,7 +647,7 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-center-tall">
+            <article className="portfolio-media-card portfolio-media-card-b-center-tall">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
                 <img
                   alt="Imagen de producción visual para proyecto"
@@ -645,7 +659,7 @@ export function Portfolio() {
               </div>
             </article>
 
-            <article className="portfolio-media-card portfolio-media-card-left-bottom">
+            <article className="portfolio-media-card portfolio-media-card-b-right-bottom">
               <div
                 className="portfolio-media-card-frame portfolio-media-card-frame-quote"
                 style={{ backgroundImage: `url(${portfolioBackImg})` }}
@@ -659,7 +673,7 @@ export function Portfolio() {
 
         {/* ── Section 10 – Grid B ── */}
         <section className="portfolio-section" aria-label="Sección 10 del portafolio">
-          <div className="portfolio-featured-grid portfolio-featured-grid--b portfolio-featured-grid--b-no-top">
+          <div className="portfolio-featured-grid portfolio-featured-grid--b">
 
             <article className="portfolio-media-card portfolio-media-card-b-left-tall">
               <div className="portfolio-media-card-frame portfolio-media-card-frame-photo">
@@ -669,6 +683,15 @@ export function Portfolio() {
                   decoding="async"
                   loading="lazy"
                   src="/portfolio/images/2-4.webp"
+                />
+              </div>
+            </article>
+
+            <article className="portfolio-media-card portfolio-media-card-b-top-right">
+              <div className="portfolio-media-card-frame portfolio-media-card-frame-video">
+                <PortfolioVideo
+                  className="portfolio-media-video"
+                  src="/portfolio/videos/ips-horizontal.webm"
                 />
               </div>
             </article>
@@ -720,14 +743,6 @@ export function Portfolio() {
 
           </div>
         </section>
-
-        {/* ── Banner: ips-horizontal.webm (16:9) ── */}
-        <div className="portfolio-video-banner">
-          <PortfolioVideo
-            className="portfolio-media-video"
-            src="/portfolio/videos/ips-horizontal.webm"
-          />
-        </div>
 
         {/* ── Section 11 – Grid C (cierre) ── */}
         <section className="portfolio-section" aria-label="Sección 11 del portafolio">
