@@ -6,6 +6,84 @@
 - Record only verified facts that help the next session continue quickly.
 - Include: date, branch/push status, commands verified, important decisions, main changes, and next recommended tasks.
 
+## 2026-04-28
+
+### Repo state
+- Branch: `master`
+- Push status: pushed to `origin/master` at end of session
+
+### Commands verified
+- `pnpm lint`
+- `pnpm build`
+
+### Key decisions
+- Replaced the entire complex grid system (Grids A/B/C/D with explicit row/column spans) with a **manual 3-column masonry layout** using flexbox.
+- Removed `react-masonry-css` after testing; it uses a greedy algorithm that leaves gaps. Manual column splitting gives perfect control.
+- Balanced 63 items across 3 columns by estimating heights: intro (24rem), photos/videos (natural height), quotes/CTAs (14rem). Max imbalance ~2%.
+- Intro card redesigned as a vertical centered hero (single column, larger min-height) to work inside the masonry flow.
+- Responsive strategy: 3 columns desktop (>1023px), 3 columns tablet (768-1023px) with scaled-down text, 2 columns mobile (<768px) via native `column-count: 2`.
+- Mobile-only item reordering: swapped CTA "Trabajemos juntos" with quote "La identidad de tu marca merece..." to improve 2-column balance.
+- Moved `reel-detectar.webm` to start of column 3.
+- Swapped `hero-camaleonte` and `photo-editorial` positions.
+- Removed duplicate `brand-odi.webp`; replaced with `v1.webm`.
+
+### Main changes completed
+- `src/pages/Portfolio.jsx`: rewrote from 800-line explicit grid sections to ~430 lines with a data array, `PortfolioCard` component, and manual column splits (`col1Items`, `col2Items`, `col3Items`). Added `mobileItems` with swapped positions.
+- `src/index.css`: replaced ~300 lines of grid-position classes with masonry styles (`portfolio-columns`, `portfolio-column`, `portfolio-masonry-card`, scaled responsive text for tablet/mobile).
+- `src/components/seo/RouteSeo.jsx`: added "y personas" to about page description.
+- Removed `react-masonry-css` dependency.
+
+### Commits created
+- `refactor(portfolio): replace complex grids with manual 3-column masonry layout`
+- `feat(seo): add personas to about page meta description`
+
+### Open context
+- Mobile `column-count: 2` uses native CSS masonry; balance is good but not as exact as manual 3-col.
+- All 63 portfolio items are rendered; no placeholders remain.
+
+### Recommended next tasks
+- Review the portfolio visually in browser at different breakpoints.
+- Adjust `stopAt` values for individual videos if they cut too early.
+- Fine-tune intro card min-height or quote/CTA heights if they feel off in the masonry flow.
+
+## 2026-04-26 (sesión 2)
+
+### Repo state
+- Branch: `master`
+- Push status: commits locales, sin push al cierre
+
+### Commands verified
+- `pnpm lint`
+- `pnpm build`
+
+### Key decisions
+- Grids B/C/D ampliados de 4 a 5 filas (`repeat(5, minmax(14rem,1fr))`).
+- Patrón de swap consolidado: videos → celdas altas (≥3 filas × 1 col); quotes/CTAs → celdas anchas (2 cols, 1 fila).
+- Grid D: se elimina `d-mid-right` y `d-bot-right`; se crea `d-right-tall` (col 3, rows 3-5) para el video desplazado.
+- S4: quote "Movimiento e imagen..." eliminada; CTA ocupa `d-top-center`.
+- S8: imagen `audoc-san-valentin.webp` eliminada; quote ocupa `d-top-center`.
+- S9: sin cambio de contenido — video ya estaba en `b-left-tall` (ideal), foto landscape `foto-grupal-rvg.webp` queda en `b-top-right` (celda ancha, correcto).
+- S10: sin cambio de contenido — `ips-horizontal.webm` correctamente en `b-top-right` (excepción: video horizontal en celda wide).
+
+### Main changes completed
+- `src/index.css`: grids B/C/D a 5 filas; spans actualizados en todas las clases `b-*`, `c-*`, `d-*`; nueva clase `d-right-tall`; mobile reset actualizado (añade `d-right-tall`, elimina `d-mid-right` y `d-bot-right`).
+- `src/pages/Portfolio.jsx`: swaps aplicados en S2, S3, S5, S6, S7, S8, S4, S11. S9 y S10 sin cambio de contenido.
+
+### Commits created
+- `eeeb20a` `refactor(portfolio): expand grids B/C/D to 5 rows, move videos to tall cells`
+
+### Open context
+- `reel-tirads-v4-ruzzi-cuando.webm` sigue referenciado en S3 — confirmar que el archivo está en `public/portfolio/videos/`.
+- `v1.webm` (S11) sin verificar visualmente.
+- `stopAt` de todos los videos sigue en el default 20 s.
+
+### Recommended next tasks
+- Revisar la página en el navegador y ajustar `stopAt` por video si alguno corta en mal momento.
+- Verificar `reel-tirads-v4-ruzzi-cuando.webm` y `v1.webm` visualmente.
+- Si alguna sección se ve desbalanceada, evaluar cambiar `object-position` de imágenes en celdas muy altas.
+- Considerar si `min-height: clamp(44rem, 110vh, 80rem)` sigue siendo el valor correcto con 5 filas.
+- Push a origin cuando estés listo.
+
 ## 2026-04-26
 
 ### Repo state
