@@ -70,7 +70,7 @@ const ROUTE_METADATA = {
     pageType: "AboutPage",
     title: "Camaleonte Studio | Productora audiovisual en Bucaramanga",
     description:
-      "Conoce a Camaleonte Studio, productora audiovisual para marcas y proyectos en Bucaramanga, el área metropolitana y Santander.",
+      "Conoce a Camaleonte Studio, productora audiovisual para marcas, proyectos y personas en Bucaramanga, el área metropolitana y Santander.",
   },
   [ROUTES.contact]: {
     pageName: "Contacto",
