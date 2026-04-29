@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import portfolioBackImg from "@/assets/portafolioback.webp";
 import { ROUTES } from "@/lib/routes.js";
@@ -415,6 +416,10 @@ function PortfolioCard({ item }) {
 }
 
 export function Portfolio() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="portfolio-page">
       <div className="container">
