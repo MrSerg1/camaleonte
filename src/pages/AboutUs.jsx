@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import aboutHeroBg from "@/assets/aboutus.webp"
+import camaleonteUs from "@/assets/camaleonteUs.webp"
 
 export function AboutUs() {
   return (
     <div className="about-us-page">
       <section className="about-hero">
-        <img 
-        className="about-hero-bg-placeholder" 
-        src={aboutHeroBg} 
-        alt="About Us" 
+        <img
+        className="about-hero-bg-placeholder"
+        src={camaleonteUs}
+        alt="Camaleonte Team"
         />
         <div className="about-hero-overlay" />
         
