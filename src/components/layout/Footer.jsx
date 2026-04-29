@@ -27,7 +27,7 @@ export function Footer() {
         <div className="footer-section">
           <h4>Siguenos</h4>
           <ul className="footer-links">
-            <li><a href="https://www.instagram.com/camaleonte.studio" className="footer-link">Instagram</a></li>
+            <li><a href="https://www.instagram.com/camaleonte.studio" className="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           </ul>
         </div>
       </div>
