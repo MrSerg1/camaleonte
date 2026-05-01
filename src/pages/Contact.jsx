@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { addToast } from "@/lib/toastStore";
 
 const contactMethods = [
   {
@@ -30,12 +33,12 @@ const services = [
   "Coorporativos",
 ];
 
-const formFields = [
-  { name: "nombre", label: "Nombre", type: "text", placeholder: "Tu nombre" },
-  { name: "correo", label: "Correo", type: "email", placeholder: "ejemplo@gmail.com" },
-  { name: "servicio", label: "Servicio", type: "select", options: services },
-  { name: "idea", label: "Tu idea", type: "textarea", placeholder: "Describe aquí qué te gustaría hacer, tu proyecto, tu idea." },
-];
+const initialForm = {
+  nombre: "",
+  correo: "",
+  servicio: "",
+  idea: "",
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -47,6 +50,102 @@ const itemVariants = {
 };
 
 export function Contact() {
+  const [formData, setFormData] = useState(initialForm);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validate = () => {
+    if (!formData.nombre.trim()) return "El nombre es obligatorio.";
+    if (!formData.correo.trim()) return "El correo es obligatorio.";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.correo.trim()))
+      return "Por favor ingresa un correo válido.";
+    if (!formData.servicio) return "Selecciona un servicio.";
+    if (!formData.idea.trim()) return "Cuéntanos tu idea.";
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const error = validate();
+    if (error) {
+      addToast({ type: "error", message: error });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          nombre: formData.nombre.trim(),
+          correo: formData.correo.trim(),
+          servicio: formData.servicio,
+          idea: formData.idea.trim(),
+        },
+        publicKey
+      );
+
+      addToast({
+        type: "success",
+        message: "¡Mensaje enviado con éxito! Te contactaremos pronto.",
+      });
+      setFormData(initialForm);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      addToast({
+        type: "error",
+        message:
+          "Hubo un problema al enviar el mensaje. Inténtalo de nuevo más tarde.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const formFields = [
+    {
+      name: "nombre",
+      label: "Nombre",
+      type: "text",
+      placeholder: "Tu nombre",
+      value: formData.nombre,
+    },
+    {
+      name: "correo",
+      label: "Correo",
+      type: "email",
+      placeholder: "ejemplo@gmail.com",
+      value: formData.correo,
+    },
+    {
+      name: "servicio",
+      label: "Servicio",
+      type: "select",
+      options: services,
+      value: formData.servicio,
+    },
+    {
+      name: "idea",
+      label: "Tu idea",
+      type: "textarea",
+      placeholder:
+        "Describe aquí qué te gustaría hacer, tu proyecto, tu idea.",
+      value: formData.idea,
+    },
+  ];
+
   return (
     <div className="contact-page">
       {/* Hero */}
@@ -82,7 +181,7 @@ export function Contact() {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="form-grid">
                 {formFields.map((field, i) => (
                   <motion.div
@@ -91,19 +190,37 @@ export function Contact() {
                     custom={i}
                     variants={itemVariants}
                   >
-                    <label className="form-label">{field.label}</label>
+                    <label className="form-label" htmlFor={field.name}>
+                      {field.label}
+                    </label>
                     {field.type === "select" ? (
-                      <select className="form-input">
-                        <option value="" disabled selected>Selecciona un servicio</option>
+                      <select
+                        id={field.name}
+                        name={field.name}
+                        className="form-input"
+                        value={field.value}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                      >
+                        <option value="" disabled>
+                          Selecciona un servicio
+                        </option>
                         {field.options.map((opt) => (
-                          <option key={opt} value={opt}>{opt}</option>
+                          <option key={opt} value={opt}>
+                            {opt}
+                          </option>
                         ))}
                       </select>
                     ) : field.type === "textarea" ? (
                       <textarea
+                        id={field.name}
+                        name={field.name}
                         rows={1}
                         className="form-input form-textarea"
                         placeholder={field.placeholder}
+                        value={field.value}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
                         onInput={(e) => {
                           e.target.style.height = "auto";
                           e.target.style.height = `${e.target.scrollHeight}px`;
@@ -111,9 +228,14 @@ export function Contact() {
                       />
                     ) : (
                       <input
+                        id={field.name}
+                        name={field.name}
                         type={field.type}
                         className="form-input"
                         placeholder={field.placeholder}
+                        value={field.value}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
                       />
                     )}
                   </motion.div>
@@ -125,11 +247,21 @@ export function Contact() {
                 className="contact-submit-btn"
                 custom={formFields.length}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={isSubmitting ? {} : { scale: 1.02 }}
+                whileTap={isSubmitting ? {} : { scale: 0.98 }}
+                disabled={isSubmitting}
               >
-                <Send size={16} />
-                Enviar
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={16} className="spin-icon" />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    Enviar
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
@@ -153,7 +285,11 @@ export function Contact() {
                   href={method.href || undefined}
                   className={`contact-method-row ${method.href ? "" : "no-link"}`}
                   target={method.href?.startsWith("http") ? "_blank" : undefined}
-                  rel={method.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                  rel={
+                    method.href?.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   custom={i}
                   variants={itemVariants}
                 >
