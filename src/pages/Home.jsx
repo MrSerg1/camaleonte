@@ -10,14 +10,14 @@ const featuredProjects = [
     client: "Centro médico especializado",
     requirements: "Necesitaban renovar su presencia digital con fotografía profesional que transmitiera confianza y cercanía con los pacientes.",
     solution: "Diseñamos una sesión editorial completa con iluminación controlada y dirección de arte que elevó la percepción de marca, logrando un tono visual coherente para todas sus redes sociales.",
-    image: "/portfolio/images/photo-editorial-1105.webp",
+    image: "https://media.camaleontestudio.com/images/photo-editorial-1105.webp",
   },
   {
     title: "Cobertura Corporativa Integral",
     client: "Evento empresarial sector salud",
     requirements: "Buscaban documentar un evento corporativo con fotografía de alto impacto que capturara la energía del equipo y la profesionalidad del encuentro.",
     solution: "Implementamos cobertura en vivo con múltiples ángulos y edición en tiempo real, entregando un set de imágenes listas para publicación que reflejaron la identidad corporativa con un acabado premium.",
-    image: "/portfolio/images/foto-grupal-rvg.webp",
+    image: "https://media.camaleontestudio.com/images/foto-grupal-rvg.webp",
   },
 ];
 
