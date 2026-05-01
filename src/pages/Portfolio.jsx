@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import portfolioBackImg from "@/assets/portafolioback.webp";
 import { ROUTES } from "@/lib/routes.js";
 import { PortfolioVideo } from "@/components/portfolio/PortfolioVideo.jsx";
@@ -9,10 +10,10 @@ const items = [
   {
     type: "intro",
     content: {
-      eyebrow: "Portafolio",
-      title: "Video, foto y dirección creativa",
+      eyebrow: "Nuestro enfoque",
+      title: "Cada proyecto es único",
       description:
-        "Selección de trabajos para marcas y proyectos que buscan presencia visual con identidad.",
+        "Trabajamos codo a codo con cada marca para crear contenido que no solo se ve bien, sino que genera resultados reales.",
     },
   },
   {
@@ -470,6 +471,37 @@ export function Portfolio() {
 
   return (
     <main className="portfolio-page">
+      {/* Hero */}
+      <section className="portfolio-hero">
+        <div className="container portfolio-hero-inner">
+          <motion.span
+            className="portfolio-hero-eyebrow"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Portafolio
+          </motion.span>
+          <motion.h1
+            className="portfolio-hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            Video, foto y <span className="text-gradient">dirección creativa</span>
+          </motion.h1>
+          <motion.p
+            className="portfolio-hero-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            Selección de trabajos para marcas y proyectos que buscan
+            <br className="hide-mobile" /> presencia visual con identidad.
+          </motion.p>
+        </div>
+      </section>
+
       <div className="container">
         {/* Desktop: 3 balanced columns */}
         <div className="portfolio-columns portfolio-columns--desktop">

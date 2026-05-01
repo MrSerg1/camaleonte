@@ -611,7 +611,61 @@ ul {
 
 /* Portfolio */
 .portfolio-page {
-  padding: 2rem 0 5rem;
+  padding: 0 0 5rem;
+}
+
+/* Portfolio Hero */
+.portfolio-hero {
+  position: relative;
+  padding: 9rem 0 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.portfolio-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 168, 136, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.portfolio-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-hero-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 300;
+  max-width: 34rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .portfolio-hero {
+    padding: 6rem 0 2rem;
+  }
 }
 
 /* Manual 3-column masonry layout */
