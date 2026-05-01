@@ -1945,9 +1945,11 @@ ul {
 }
 
 .form-input.form-textarea {
-  resize: vertical;
+  resize: none;
+  overflow: hidden;
   min-height: 8rem;
   line-height: 1.5;
+  field-sizing: content;
 }
 
 .form-input option {

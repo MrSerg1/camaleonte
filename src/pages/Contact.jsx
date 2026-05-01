@@ -101,9 +101,13 @@ export function Contact() {
                       </select>
                     ) : field.type === "textarea" ? (
                       <textarea
-                        rows={5}
+                        rows={1}
                         className="form-input form-textarea"
                         placeholder={field.placeholder}
+                        onInput={(e) => {
+                          e.target.style.height = "auto";
+                          e.target.style.height = `${e.target.scrollHeight}px`;
+                        }}
                       />
                     ) : (
                       <input
