@@ -662,6 +662,11 @@ ul {
   position: relative;
   width: 100%;
   line-height: 0;
+  min-height: 220px;
+}
+
+.portfolio-masonry-frame--photo {
+  min-height: 220px;
 }
 
 .portfolio-video-wrapper .portfolio-masonry-media {
@@ -709,11 +714,68 @@ ul {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   background:
     linear-gradient(180deg, rgba(4, 5, 5, 0.05) 0%, rgba(4, 5, 5, 0.72) 100%),
     linear-gradient(135deg, rgba(10, 12, 11, 0.08), rgba(95, 255, 202, 0.08));
   pointer-events: none;
+}
+
+/* Skeleton loader */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    var(--color-dark-gray) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    var(--color-dark-gray) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite ease-in-out;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.portfolio-masonry-media {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* Loading screen (Suspense fallback) */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1.25rem;
+  padding: 2rem;
+}
+
+.loading-screen-skeleton {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  inset: auto;
+}
+
+.loading-screen-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 /* Intro card - vertical centered hero */

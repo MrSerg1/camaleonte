@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Skeleton } from "@/components/ui/Skeleton.jsx";
 
 const VolumeOffIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -19,6 +20,7 @@ export function PortfolioVideo({ src, stopAt = 20, className }) {
   const videoRef = useRef(null);
   const [effectiveStopAt, setEffectiveStopAt] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -31,12 +33,20 @@ export function PortfolioVideo({ src, stopAt = 20, className }) {
       } else {
         setEffectiveStopAt(stopAt);
       }
+      setIsLoaded(true);
     };
 
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    if (video.readyState >= 1) {
+      handleLoadedMetadata();
+    } else {
+      video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    }
+
+    const timeout = setTimeout(() => setIsLoaded(true), 5000);
 
     return () => {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      clearTimeout(timeout);
     };
   }, [src, stopAt]);
 
@@ -84,7 +94,15 @@ export function PortfolioVideo({ src, stopAt = 20, className }) {
 
   return (
     <div className="portfolio-video-wrapper">
-      <video ref={videoRef} className={className} muted playsInline preload="auto">
+      {!isLoaded && <Skeleton className="portfolio-skeleton portfolio-skeleton--video" />}
+      <video
+        ref={videoRef}
+        className={className}
+        muted
+        playsInline
+        preload="auto"
+        style={{ opacity: isLoaded ? 1 : 0 }}
+      >
         <source src={src} type="video/webm" />
       </video>
       <button

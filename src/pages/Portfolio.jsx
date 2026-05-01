@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import portfolioBackImg from "@/assets/portafolioback.webp";
 import { ROUTES } from "@/lib/routes.js";
 import { PortfolioVideo } from "@/components/portfolio/PortfolioVideo.jsx";
+import { Skeleton } from "@/components/ui/Skeleton.jsx";
 
 const items = [
   {
@@ -16,30 +17,30 @@ const items = [
   },
   {
     type: "video",
-    src: "/portfolio/videos/hero-camaleonte.webm",
+    src: "https://media.camaleontestudio.com/videos/hero-camaleonte.webm",
   },
   {
     type: "photo",
     alt: "Sesión editorial con retrato para campaña visual",
-    src: "/portfolio/images/photo-editorial-1105.webp",
+    src: "https://media.camaleontestudio.com/images/photo-editorial-1105.webp",
   },
   {
     type: "photo",
     alt: "Pieza visual para redes sociales y contenido de marca",
-    src: "/portfolio/images/feed-diseno-odi.webp",
+    src: "https://media.camaleontestudio.com/images/feed-diseno-odi.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-joyas-sabrina-carpenter-espresso.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-joyas-sabrina-carpenter-espresso.webm",
   },
   {
     type: "video",
-    src: "/portfolio/videos/v1.webm",
+    src: "https://media.camaleontestudio.com/videos/v1.webm",
   },
   {
     type: "photo",
     alt: "Fotografía de producción",
-    src: "/portfolio/images/fotografia-1.webp",
+    src: "https://media.camaleontestudio.com/images/fotografia-1.webp",
   },
   {
     type: "quote",
@@ -48,25 +49,25 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de producción audiovisual",
-    src: "/portfolio/images/1.webp",
+    src: "https://media.camaleontestudio.com/images/1.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-tengo-tiroides-bad-dreams-teddy-swims.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-tengo-tiroides-bad-dreams-teddy-swims.webm",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-motivacional-dinamico-flawed-mangoes-dramamine-v2.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-motivacional-dinamico-flawed-mangoes-dramamine-v2.webm",
   },
   {
     type: "photo",
     alt: "Fotografía de estudio",
-    src: "/portfolio/images/foto-7-final.webp",
+    src: "https://media.camaleontestudio.com/images/foto-7-final.webp",
   },
   {
     type: "photo",
     alt: "Retrato editorial para campaña visual",
-    src: "/portfolio/images/photo-editorial-5618.webp",
+    src: "https://media.camaleontestudio.com/images/photo-editorial-5618.webp",
   },
   {
     type: "quote",
@@ -75,26 +76,26 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de contenido de marca",
-    src: "/portfolio/images/2.webp",
+    src: "https://media.camaleontestudio.com/images/2.webp",
   },
   {
     type: "photo",
     alt: "Fotografía de sesión con cliente",
-    src: "/portfolio/images/foto-4.webp",
+    src: "https://media.camaleontestudio.com/images/foto-4.webp",
   },
   {
     type: "photo",
     alt: "Imagen de producción para proyecto de marca",
-    src: "/portfolio/images/foto-3.webp",
+    src: "https://media.camaleontestudio.com/images/foto-3.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-tirads-v4-ruzzi-cuando.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-tirads-v4-ruzzi-cuando.webm",
   },
   {
     type: "photo",
     alt: "Feed de diseño para redes sociales de cliente",
-    src: "/portfolio/images/feed-jaimec.webp",
+    src: "https://media.camaleontestudio.com/images/feed-jaimec.webp",
   },
   {
     type: "cta",
@@ -105,21 +106,21 @@ const items = [
   {
     type: "photo",
     alt: "Fotografía de producción visual",
-    src: "/portfolio/images/img-7530.webp",
+    src: "https://media.camaleontestudio.com/images/img-7530.webp",
   },
   {
     type: "photo",
     alt: "Retrato en sesión fotográfica",
-    src: "/portfolio/images/foto-1.webp",
+    src: "https://media.camaleontestudio.com/images/foto-1.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-octubre-rosa-kodaline-all-i-want-piano.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-octubre-rosa-kodaline-all-i-want-piano.webm",
   },
   {
     type: "photo",
     alt: "Fotografía de producción para proyecto visual",
-    src: "/portfolio/images/foto-2.webp",
+    src: "https://media.camaleontestudio.com/images/foto-2.webp",
   },
   {
     type: "quote",
@@ -128,25 +129,25 @@ const items = [
   {
     type: "photo",
     alt: "Story de contenido educativo para redes",
-    src: "/portfolio/images/story-esguince-1.webp",
+    src: "https://media.camaleontestudio.com/images/story-esguince-1.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-javier-prp.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-javier-prp.webm",
   },
   {
     type: "photo",
     alt: "Imagen de contenido visual para proyecto",
-    src: "/portfolio/images/3.webp",
+    src: "https://media.camaleontestudio.com/images/3.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-28-dic-midnight-mood.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-28-dic-midnight-mood.webm",
   },
   {
     type: "photo",
     alt: "Fotografía documental de sesión con profesional",
-    src: "/portfolio/images/photo-doc-jaime.webp",
+    src: "https://media.camaleontestudio.com/images/photo-doc-jaime.webp",
   },
   {
     type: "quote",
@@ -155,26 +156,26 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de producción visual",
-    src: "/portfolio/images/4.webp",
+    src: "https://media.camaleontestudio.com/images/4.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-braquimetatarsia.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-braquimetatarsia.webm",
   },
   {
     type: "photo",
     alt: "Story de contenido educativo en redes",
-    src: "/portfolio/images/story-esguince-2.webp",
+    src: "https://media.camaleontestudio.com/images/story-esguince-2.webp",
   },
   {
     type: "photo",
     alt: "Banner de diseño para campaña de marca",
-    src: "/portfolio/images/banner-natalia.webp",
+    src: "https://media.camaleontestudio.com/images/banner-natalia.webp",
   },
   {
     type: "photo",
     alt: "Fotografía de sesión para profesional de la salud",
-    src: "/portfolio/images/photo-profesionalisima.webp",
+    src: "https://media.camaleontestudio.com/images/photo-profesionalisima.webp",
   },
   {
     type: "cta",
@@ -185,26 +186,26 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de producción visual para proyecto",
-    src: "/portfolio/images/5.webp",
+    src: "https://media.camaleontestudio.com/images/5.webp",
   },
   {
     type: "photo",
     alt: "Story educativa para redes sociales",
-    src: "/portfolio/images/story-esguince-3.webp",
+    src: "https://media.camaleontestudio.com/images/story-esguince-3.webp",
   },
   {
     type: "photo",
     alt: "Fotografía documental para proyecto de comunicación",
-    src: "/portfolio/images/doc-jaime.webp",
+    src: "https://media.camaleontestudio.com/images/doc-jaime.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-detectar.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-detectar.webm",
   },
   {
     type: "photo",
     alt: "Imagen de producción para campaña visual",
-    src: "/portfolio/images/6.webp",
+    src: "https://media.camaleontestudio.com/images/6.webp",
   },
   {
     type: "quote",
@@ -213,40 +214,40 @@ const items = [
   {
     type: "photo",
     alt: "Feed de foto para perfil profesional en redes",
-    src: "/portfolio/images/feed-foto-profesionalisima.webp",
+    src: "https://media.camaleontestudio.com/images/feed-foto-profesionalisima.webp",
   },
   {
     type: "photo",
     alt: "Story final de serie educativa para redes",
-    src: "/portfolio/images/story-esguince-4.webp",
+    src: "https://media.camaleontestudio.com/images/story-esguince-4.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/audoc-presentation.webm",
+    src: "https://media.camaleontestudio.com/videos/audoc-presentation.webm",
   },
   {
     type: "video",
-    src: "/portfolio/videos/reel-cuales-son-los-riesgos-de-la-cirugia-tiroides.webm",
+    src: "https://media.camaleontestudio.com/videos/reel-cuales-son-los-riesgos-de-la-cirugia-tiroides.webm",
   },
   {
     type: "photo",
     alt: "Fotografía grupal para proyecto corporativo",
-    src: "/portfolio/images/foto-grupal-rvg.webp",
+    src: "https://media.camaleontestudio.com/images/foto-grupal-rvg.webp",
   },
   {
     type: "photo",
     alt: "Imagen de producción visual",
-    src: "/portfolio/images/2-1.webp",
+    src: "https://media.camaleontestudio.com/images/2-1.webp",
   },
   {
     type: "photo",
     alt: "Imagen de producción para contenido de marca",
-    src: "/portfolio/images/2-2.webp",
+    src: "https://media.camaleontestudio.com/images/2-2.webp",
   },
   {
     type: "photo",
     alt: "Imagen de producción visual para proyecto",
-    src: "/portfolio/images/2-3.webp",
+    src: "https://media.camaleontestudio.com/images/2-3.webp",
   },
   {
     type: "cta",
@@ -257,26 +258,26 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de producción para proyecto visual",
-    src: "/portfolio/images/2-4.webp",
+    src: "https://media.camaleontestudio.com/images/2-4.webp",
   },
   {
     type: "video",
-    src: "/portfolio/videos/ips-horizontal.webm",
+    src: "https://media.camaleontestudio.com/videos/ips-horizontal.webm",
   },
   {
     type: "photo",
     alt: "Imagen de producción visual",
-    src: "/portfolio/images/2-5.webp",
+    src: "https://media.camaleontestudio.com/images/2-5.webp",
   },
   {
     type: "photo",
     alt: "Fotografía de producción para contenido de marca",
-    src: "/portfolio/images/3-1.webp",
+    src: "https://media.camaleontestudio.com/images/3-1.webp",
   },
   {
     type: "photo",
     alt: "Imagen de producción visual para proyecto",
-    src: "/portfolio/images/3-2.webp",
+    src: "https://media.camaleontestudio.com/images/3-2.webp",
   },
   {
     type: "quote",
@@ -285,12 +286,12 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de producción visual",
-    src: "/portfolio/images/3-3.webp",
+    src: "https://media.camaleontestudio.com/images/3-3.webp",
   },
   {
     type: "photo",
     alt: "Imagen de producción visual de cierre",
-    src: "/portfolio/images/3-5.webp",
+    src: "https://media.camaleontestudio.com/images/3-5.webp",
   },
   {
     type: "quote",
@@ -299,7 +300,7 @@ const items = [
   {
     type: "photo",
     alt: "Imagen de producción para proyecto de marca",
-    src: "/portfolio/images/3-4.webp",
+    src: "https://media.camaleontestudio.com/images/3-4.webp",
   },
 ];
 
@@ -328,6 +329,65 @@ const idxQuote = mobileItems.findIndex(
   mobileItems[idxQuote],
   mobileItems[idxCta],
 ];
+
+function PortfolioImage({ src, alt }) {
+  const [loaded, setLoaded] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const cardRef = useRef(null);
+  const imgDomRef = useRef(null);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+
+    const img = imgDomRef.current;
+    if (!img) return;
+
+    if (img.complete && img.naturalHeight > 0) {
+      setLoaded(true);
+      return;
+    }
+
+    const timeout = setTimeout(() => setLoaded(true), 5000);
+    return () => clearTimeout(timeout);
+  }, [shouldLoad]);
+
+  return (
+    <article className="portfolio-masonry-card" ref={cardRef}>
+      <div className="portfolio-masonry-frame portfolio-masonry-frame--photo">
+        {!loaded && <Skeleton className="portfolio-skeleton" />}
+        {shouldLoad && (
+          <img
+            ref={imgDomRef}
+            alt={alt}
+            className="portfolio-masonry-media"
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            src={src}
+            style={{ opacity: loaded ? 1 : 0 }}
+          />
+        )}
+      </div>
+    </article>
+  );
+}
 
 function PortfolioCard({ item }) {
   if (item.type === "intro") {
@@ -400,19 +460,7 @@ function PortfolioCard({ item }) {
     );
   }
 
-  return (
-    <article className="portfolio-masonry-card">
-      <div className="portfolio-masonry-frame portfolio-masonry-frame--photo">
-        <img
-          alt={item.alt}
-          className="portfolio-masonry-media"
-          decoding="async"
-          loading="lazy"
-          src={item.src}
-        />
-      </div>
-    </article>
-  );
+  return <PortfolioImage src={item.src} alt={item.alt} />;
 }
 
 export function Portfolio() {
