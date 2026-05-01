@@ -1,159 +1,302 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Clapperboard, Camera, MonitorPlay } from "lucide-react";
-import snarkdown from 'snarkdown';
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/lib/routes";
+import { Camera, Smartphone, CalendarDays, Film, Building2, ArrowRight, Check, MessageSquare, Clapperboard, PackageOpen } from "lucide-react";
 
-const originalServices = [
-  {
-    icon: Clapperboard,
-    title: "Esencial",
-    description: `Ideal para marcas en crecimiento que buscan una presencia profesional y tranquila:
-<br>
-- **3 publicaciones:** Fotos / Diseño. 
-- **5 Historias:** Públicaciones interactivas e historias destacadas.
-- **4 Reels:** Video corto dinámico y atractivo.`
-  },
+const services = [
   {
     icon: Camera,
-    title: "Emprendedor",
-    description: `Ideal para marcas que buscan establecer su presencia digital y conectar con su audiencia de forma constante:
-
-- **4 Publicaciones**: Diseño de fotos y posts para un FEED estético.
-- **6 Historias**: Interacción diaria y gestión de historias destacadas.
-- **6 Reels**: Videos dinámicos para aumentar tu alcance orgánico.`
-  },
-  {
-    icon: MonitorPlay,
-    title: "Pro",
-    description: `Domina tu nicho con una estrategia con base en el contenido de alto impacto, diseñada para maximizar tu alcance y autoridad:
-
-- **6 Publicaciones Premium**: Diseños estratégicos de alto nivel.
-- **7 Stories Interactivas**: Dinámicas para aumentar la conexión y retención de tu audiencia.
-- **7 Reels de Alto Alcance**: Edición profesional con tendencias y audios virales.
-`
-}
-];
-
-const fullViewportServices = [
-  {
-    id: 1,
     title: "Sesiones Fotográficas",
-    description: "Capturamos la esencia de tu marca con fotografía comercial, edicion y de producto de alta calidad. expertos en iluminación y composición precisa para campañas que buscan alto impacto.",
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80",
-    align: "left"
+    description: "Fotografía comercial, editorial y de producto con iluminación controlada y dirección de arte que eleva la percepción de tu marca.",
+    image: "https://media.camaleontestudio.com/images/photo-editorial-5618.webp",
   },
   {
-    id: 2,
-    title: "Diseño y contenido para redes sociales",
-    description: "Diseñamos estratégicamente el contenido que detiene el scroll. Creamos Reels dinámicos y posts visualmente potentes optimizados para el algoritmo de Facebook,Instagram, TikTok y Youtube.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80",
-    align: "right"
+    icon: Smartphone,
+    title: "Contenido para Redes",
+    description: "Diseñamos el contenido que detiene el scroll. Posts, carruseles y stories optimizados para el algoritmo de Instagram, TikTok y Facebook.",
+    image: "https://media.camaleontestudio.com/images/feed-diseno-odi.webp",
   },
   {
-    id: 3,
-    title: "Sesiones en Eventos",
-    description: "Inmortalizamos la energía de tus eventos. Cobertura en vivo, aftermovies y fotografía documental para conciertos, festivales y eventos corporativos.",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80",
-    align: "left"
+    icon: CalendarDays,
+    title: "Cobertura de Eventos",
+    description: "Inmortalizamos la energía de tus eventos con fotografía documental, cobertura en vivo y aftermovies cinematográficos.",
+    image: "https://media.camaleontestudio.com/images/foto-grupal-rvg.webp",
   },
   {
-    id: 4,
-    title: "Creamos Reels",
-    description: "Transformamos tus ideas o material crudo en Reels de alta calidad. Nos enfocamos en la edición dinámica, tendencias sonoras y narrativa visual para marcas que ya tienen una estrategia pero necesitan una ejecución impecable y profesional",
-    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80",
-    align: "right"
+    icon: Film,
+    title: "Reels & Shorts",
+    description: "Transformamos ideas en videos de alto impacto. Edición dinámica, tendencias sonoras y narrativa visual que conecta con tu audiencia.",
+    image: "https://media.camaleontestudio.com/images/story-esguince-1.webp",
   },
   {
-    id: 5,
-    title: "Videos coorporativos",
-    description: "Comunicación corporativa elevada. Entrevistas cinematográficas, videos de cultura empresarial y testimoniales que transmiten confianza y profesionalismo.",
-    image: "https://images.unsplash.com/photo-1574717432707-c25419be1f1a?auto=format&fit=crop&q=80",
-    align: "left"
-  }
+    icon: Building2,
+    title: "Video Corporativo",
+    description: "Entrevistas cinematográficas, videos de cultura empresarial y testimoniales que transmiten confianza, profesionalismo y valores.",
+    image: "https://media.camaleontestudio.com/images/3-2.webp",
+  },
 ];
 
-function ServiceSection({ service }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
+const plans = [
+  {
+    name: "Esencial",
+    price: "$",
+    description: "Presencia profesional para marcas en crecimiento",
+    features: [
+      "3 publicaciones (foto / diseño)",
+      "5 historias interactivas",
+      "4 reels dinámicos",
+      "1 sesión fotográfica mensual",
+    ],
+    highlight: false,
+  },
+  {
+    name: "Emprendedor",
+    price: "$$",
+    description: "Conecta con tu audiencia de forma constante",
+    features: [
+      "4 publicaciones de feed estético",
+      "6 historias diarias",
+      "6 reels de alcance orgánico",
+      "2 sesiones fotográficas mensuales",
+      "Diseño de historias destacadas",
+    ],
+    highlight: true,
+  },
+  {
+    name: "Pro",
+    price: "$$$",
+    description: "Estrategia de alto impacto para dominar tu nicho",
+    features: [
+      "6 publicaciones premium",
+      "7 stories interactivas",
+      "7 reels con edición profesional",
+      "3 sesiones fotográficas mensuales",
+      "Video corporativo trimestral",
+      "Análisis de métricas y reporte",
+    ],
+    highlight: false,
+  },
+];
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
+const process = [
+  {
+    step: "01",
+    icon: MessageSquare,
+    title: "Brief",
+    description: "Nos sentamos contigo a entender tu marca, tus objetivos y tu audiencia. Cada proyecto comienza con una conversación real.",
+  },
+  {
+    step: "02",
+    icon: Clapperboard,
+    title: "Producción",
+    description: "Ejecutamos con precisión creativa. Fotografía, video, diseño y edición bajo un mismo estándar de calidad exigente.",
+  },
+  {
+    step: "03",
+    icon: PackageOpen,
+    title: "Entrega",
+    description: "Recibes contenido listo para publicar, optimizado para cada plataforma y acompañado de recomendaciones estratégicas.",
+  },
+];
 
-  return (
-    <section ref={ref} className={`service-full-section ${service.align === "right" ? "align-right" : ""}`}>
-      <div className="service-full-content">
-        <motion.div 
-          className="service-text-block"
-          initial={{ opacity: 0, x: service.align === "left" ? -50 : 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <h2 className="service-full-title">{service.title}</h2>
-          <p className="service-full-description">{service.description}</p>
-          <motion.button 
-            className="service-learn-more"
-            whileHover={{ x: 10 }}
-          >
-            Comenzar <ArrowRight size={16} />
-          </motion.button>
-        </motion.div>
-
-        <motion.div 
-          className="service-image-block"
-          style={{ y, opacity }}
-        >
-          <div className="image-wrapper">
-            <img src={service.image} alt={service.title} />
-            <div className="image-overlay"></div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay, ease: "easeOut" },
+  }),
+};
 
 export function Services() {
   return (
-    <div className="services-page-container">
-       <h1 className="page-title">Servicios</h1>
-      {/* Nuevas Secciones Full Viewport */}
-      <section className="services-full-wrapper">
-        {fullViewportServices.map((service) => (
-          <ServiceSection key={service.id} service={service} />
-        ))}
+    <div className="services-page">
+      {/* Hero */}
+      <section className="services-hero">
+        <div className="container services-hero-inner">
+          <motion.span
+            className="services-hero-eyebrow"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Lo que hacemos
+          </motion.span>
+          <motion.h1
+            className="services-hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            Producción creativa
+            <br />
+            <span className="text-gradient">con estrategia</span>
+          </motion.h1>
+          <motion.p
+            className="services-hero-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            Fotografía, video y diseño que convierten tu marca
+            <br className="hide-mobile" /> en una experiencia visual memorable.
+          </motion.p>
+        </div>
       </section>
 
-       {/* Sección Original de Tarjetas */}
-      <section className="services-page">
-        <section className="services-grid">
-          {originalServices.map((service) => (
-            <div className="service-card" key={service.title}>
-              <article className="service-content">
-                <service.icon className="service-icon" />
-                <h3 className="service-title">{service.title}</h3>
-                <div 
-                  className="service-description"
-                  dangerouslySetInnerHTML={{__html: snarkdown(service.description) }}
+      {/* Services Grid */}
+      <section className="services-showcase">
+        <div className="container">
+          <div className="services-grid">
+            {services.map((service, i) => (
+              <motion.div
+                key={service.title}
+                className="service-card"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                custom={i * 0.1}
+                variants={fadeUp}
+              >
+                <div
+                  className="service-card-bg"
+                  style={{ backgroundImage: `url(${service.image})` }}
                 />
-              
-                <div className="service-cta-wrapper">
-                  <Link to={ROUTES.contact} className="service-cta">
-                    Personaliza tu plan
+                <div className="service-card-overlay" />
+                <div className="service-card-content">
+                  <service.icon className="service-card-icon" size={28} />
+                  <h3 className="service-card-title">{service.title}</h3>
+                  <p className="service-card-desc">{service.description}</p>
+                  <Link to={ROUTES.contact} className="service-card-link">
+                    Solicitar <ArrowRight size={14} />
                   </Link>
                 </div>
-              </article>
-            </div>
-          ))}
-        </section>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      
+      {/* Process */}
+      <section className="services-process">
+        <div className="container">
+          <motion.div
+            className="process-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="process-eyebrow">Cómo trabajamos</span>
+            <h2 className="process-title">
+              De la idea <span className="text-gradient">al resultado</span>
+            </h2>
+          </motion.div>
+
+          <div className="process-steps">
+            {process.map((item, i) => (
+              <motion.div
+                key={item.step}
+                className="process-step"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                custom={i * 0.15}
+                variants={fadeUp}
+              >
+                <span className="process-number">{item.step}</span>
+                <item.icon className="process-icon" size={24} />
+                <h3 className="process-step-title">{item.title}</h3>
+                <p className="process-step-desc">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Plans */}
+      <section className="services-plans">
+        <div className="container">
+          <motion.div
+            className="plans-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="plans-eyebrow">Planes mensuales</span>
+            <h2 className="plans-title">
+              Escoge tu <span className="text-gradient">ritmo</span>
+            </h2>
+            <p className="plans-subtitle">
+              Todos los planes incluyen dirección creativa, edición profesional
+              y entrega optimizada para redes.
+            </p>
+          </motion.div>
+
+          <div className="plans-grid">
+            {plans.map((plan, i) => (
+              <motion.div
+                key={plan.name}
+                className={`plan-card ${plan.highlight ? "plan-card--highlight" : ""}`}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                custom={i * 0.12}
+                variants={fadeUp}
+              >
+                {plan.highlight && (
+                  <span className="plan-badge">Más popular</span>
+                )}
+                <h3 className="plan-name">{plan.name}</h3>
+                <div className="plan-price">{plan.price}</div>
+                <p className="plan-desc">{plan.description}</p>
+                <ul className="plan-features">
+                  {plan.features.map((feat) => (
+                    <li key={feat}>
+                      <Check size={16} className="plan-check" />
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to={ROUTES.contact}
+                  className={`plan-cta ${plan.highlight ? "plan-cta--primary" : ""}`}
+                >
+                  Personalizar plan
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="services-cta">
+        <div className="container">
+          <motion.div
+            className="services-cta-inner"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="services-cta-title">
+              ¿Ningún plan encaja?
+              <br />
+              <span className="text-gradient">Construimos a tu medida.</span>
+            </h2>
+            <p className="services-cta-desc">
+              Cada marca es diferente. Hablemos de tu proyecto y diseñamos
+              una propuesta que se ajuste exactamente a lo que necesitas.
+            </p>
+            <Link to={ROUTES.contact} className="cta-button">
+              Hablemos de tu proyecto
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
