@@ -75,9 +75,6 @@ importers:
       vite:
         specifier: ^6.3.5
         version: 6.4.2(@types/node@22.19.17)
-      vite-plugin-trae-solo-badge:
-        specifier: ^1.0.0
-        version: 1.0.0(vite@6.4.2(@types/node@22.19.17))
       vite-tsconfig-paths:
         specifier: ^5.1.4
         version: 5.1.4(vite@6.4.2(@types/node@22.19.17))
@@ -1679,11 +1676,6 @@ packages:
 
   vimeo-video-element@1.7.1:
     resolution: {integrity: sha512-GSlKdqPoa133f2YbuO4JObPWuZ/3+ShIesXhpqtli4p0+STL4YsZ73ixolLK49+VHkOFMfnjeN9Cghh+bGjkhA==}
-
-  vite-plugin-trae-solo-badge@1.0.0:
-    resolution: {integrity: sha512-vrNr4QmbcqqMeJPzHBqef70nqDzN6CQngFwuXTJMAgn3zMU4TWzvY0B3BRdjUjvg/BtvNJLlwu2cPKXTUjalHg==}
-    peerDependencies:
-      vite: '>=4.0.0'
 
   vite-tsconfig-paths@5.1.4:
     resolution: {integrity: sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==}
@@ -3592,11 +3584,6 @@ snapshots:
     dependencies:
       '@vimeo/player': 2.29.0
       media-played-ranges-mixin: 0.1.0
-
-  vite-plugin-trae-solo-badge@1.0.0(vite@6.4.2(@types/node@22.19.17)):
-    dependencies:
-      tslib: 2.8.1
-      vite: 6.4.2(@types/node@22.19.17)
 
   vite-tsconfig-paths@5.1.4(vite@6.4.2(@types/node@22.19.17)):
     dependencies:
