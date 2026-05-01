@@ -39,7 +39,6 @@ const services = [
 const plans = [
   {
     name: "Esencial",
-    price: "$",
     description: "Presencia profesional para marcas en crecimiento",
     features: [
       "3 publicaciones (foto / diseño)",
@@ -51,7 +50,6 @@ const plans = [
   },
   {
     name: "Emprendedor",
-    price: "$$",
     description: "Conecta con tu audiencia de forma constante",
     features: [
       "4 publicaciones de feed estético",
@@ -64,7 +62,6 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$$$",
     description: "Estrategia de alto impacto para dominar tu nicho",
     features: [
       "6 publicaciones premium",
@@ -249,7 +246,6 @@ export function Services() {
                   <span className="plan-badge">Más popular</span>
                 )}
                 <h3 className="plan-name">{plan.name}</h3>
-                <div className="plan-price">{plan.price}</div>
                 <p className="plan-desc">{plan.description}</p>
                 <ul className="plan-features">
                   {plan.features.map((feat) => (
@@ -291,7 +287,7 @@ export function Services() {
               una propuesta que se ajuste exactamente a lo que necesitas.
             </p>
             <Link to={ROUTES.contact} className="cta-button">
-              Hablemos de tu proyecto
+              Cuentanos tu proyecto
               <ArrowRight size={18} />
             </Link>
           </motion.div>
