@@ -1,25 +1,28 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Home } from "@/pages/Home";
-import { Portfolio } from "@/pages/Portfolio";
-import { Services } from "@/pages/Services";
-// import { Ourgear } from "@/pages/Ourgear";
-import { Contact } from "@/pages/Contact";
-import { AboutUs } from "@/pages/AboutUs";
+import { LoadingScreen } from "@/components/ui/LoadingScreen.jsx";
 import { ROUTES } from "@/lib/routes";
+
+const Portfolio = lazy(() => import("@/pages/Portfolio.jsx").then((m) => ({ default: m.Portfolio })));
+const Services = lazy(() => import("@/pages/Services.jsx").then((m) => ({ default: m.Services })));
+const Contact = lazy(() => import("@/pages/Contact.jsx").then((m) => ({ default: m.Contact })));
+const AboutUs = lazy(() => import("@/pages/AboutUs.jsx").then((m) => ({ default: m.AboutUs })));
 
 function App() {
   return (
     <Router>
       <Layout>
-        <Routes>
-          <Route path={ROUTES.home} element={<Home />} />
-          <Route path={ROUTES.about} element={<AboutUs />} />
-          <Route path={ROUTES.portfolio} element={<Portfolio />} />
-          <Route path={ROUTES.services} element={<Services />} />
-          <Route path={ROUTES.contact} element={<Contact />} />
-          {/* <Route path="/equipo" element={<Ourgear />} /> */}
-        </Routes>
+        <Suspense fallback={<LoadingScreen />}>
+          <Routes>
+            <Route path={ROUTES.home} element={<Home />} />
+            <Route path={ROUTES.about} element={<AboutUs />} />
+            <Route path={ROUTES.portfolio} element={<Portfolio />} />
+            <Route path={ROUTES.services} element={<Services />} />
+            <Route path={ROUTES.contact} element={<Contact />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </Router>
   );

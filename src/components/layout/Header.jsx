@@ -7,11 +7,11 @@ import { ROUTES } from "@/lib/routes";
 import logo from "@/assets/Camaleonte.webp";
 
 const navigation = [
-  { name: "Portafolio", href: ROUTES.portfolio },
-  { name: "Servicios", href: ROUTES.services },
-  { name: "Nosotros", href: ROUTES.about },
+  { name: "Portafolio", href: ROUTES.portfolio, module: () => import("@/pages/Portfolio.jsx") },
+  { name: "Servicios", href: ROUTES.services, module: () => import("@/pages/Services.jsx") },
+  { name: "Nosotros", href: ROUTES.about, module: () => import("@/pages/AboutUs.jsx") },
   // { name: "Equipo", href: "/equipo" },
-  { name: "Contacto", href: ROUTES.contact },
+  { name: "Contacto", href: ROUTES.contact, module: () => import("@/pages/Contact.jsx") },
 ];
 
 export function Header() {
@@ -48,6 +48,7 @@ export function Header() {
                 "nav-link",
                 location.pathname === item.href && "active"
               )}
+              onMouseEnter={() => item.module?.()}
             >
               {item.name}
             </Link>
@@ -78,6 +79,7 @@ export function Header() {
               to={item.href}
               className="mobile-nav-link"
               onClick={() => setMobileMenuOpen(false)}
+              onMouseEnter={() => item.module?.()}
             >
               {item.name}
             </Link>
