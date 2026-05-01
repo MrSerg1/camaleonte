@@ -5,14 +5,14 @@ const contactMethods = [
   {
     icon: Mail,
     label: "Correo",
-    value: "info@camaleonte.com",
-    href: "mailto:info@camaleonte.com",
+    value: "camaleonte.studios@gmail.com",
+    href: "mailto:camaleonte.studios@gmail.com",
   },
   {
     icon: Phone,
     label: "WhatsApp",
-    value: "+1 (234) 567-890",
-    href: "https://wa.me/1234567890",
+    value: "+57 319 4263404",
+    href: "https://wa.me/573194263404",
   },
   {
     icon: MapPin,
