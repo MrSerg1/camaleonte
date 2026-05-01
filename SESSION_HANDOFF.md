@@ -6,6 +6,61 @@
 - Record only verified facts that help the next session continue quickly.
 - Include: date, branch/push status, commands verified, important decisions, main changes, and next recommended tasks.
 
+## 2026-04-30
+
+### Repo state
+- Branch: `master`
+- Push status: pushed to `origin/master` at end of session
+
+### Commands verified
+- `pnpm lint`
+- `pnpm build`
+
+### Key decisions
+- Portfolio media migrated from local `/portfolio/` to Cloudflare R2 (`media.camaleontestudio.com`)
+- Skeleton loading states added to Portfolio images and videos for better UX during R2 loads
+- Route-level code splitting implemented: Portfolio, Services, Contact, AboutUs are lazy-loaded
+- `LoadingScreen` component created for Suspense fallback (dark shimmer, no fullscreen overlay)
+- Header navigation prefetches page chunks on hover via dynamic `import()`
+- Services page completely redesigned: own portfolio images instead of Unsplash, glassmorphism cards, 3-step process, clean pricing plans without prices
+- Hero gradient on Home fixed: replaced `mask-image` with `::after` overlay to preserve photo quality
+- Portfolio page now has its own cinematic hero with green radial glow (matching Services aesthetic)
+- Contact info updated to real data: `camaleonte.studios@gmail.com` and `+57 319 4263404`
+
+### Main changes completed
+- `src/pages/Portfolio.jsx`: R2 URLs, IntersectionObserver lazy loading (200px rootMargin), skeleton integration, new hero section, intro card text updated
+- `src/components/portfolio/PortfolioVideo.jsx`: skeleton loader, `readyState` check, 5s timeout fallback
+- `src/components/ui/Skeleton.jsx`: new dark-themed shimmer component
+- `src/components/ui/LoadingScreen.jsx`: new page loader for Suspense fallback
+- `src/App.jsx`: React.lazy imports for all pages except Home, Suspense wrapper
+- `src/components/layout/Header.jsx`: prefetch on hover for navigation links
+- `src/pages/Services.jsx`: complete redesign — own images, process section, clean pricing cards, final CTA
+- `src/pages/Contact.jsx`: real email and WhatsApp updated
+- `src/index.css`: skeleton styles, hero overlay fix, services redesign styles, portfolio hero styles
+
+### Commits created
+- `fff5a87` `feat(portfolio): add hero section with green radial glow`
+- `bc1f151` `fix(services): remove pricing and equalize plan card heights`
+- `b2e41b5` `feat(services): complete redesign with cinematic premium layout`
+- `3e2316e` `fix(hero): replace mask-image with overlay gradient to preserve photo quality`
+- `07fcc6f` `fix(contact): update email and WhatsApp with real contact info`
+- `cc117ff` `feat(perf): implement route lazy loading, page loader, and nav prefetch`
+- `ecd3d7e` `feat(portfolio): migrate media to Cloudflare R2 with skeleton loading states`
+
+### Open context
+- Two images in R2 may be missing: `foto-1.webp` (404 confirmed). User may need to verify R2 bucket contents.
+- `foto-1.webp` still referenced in Portfolio; if permanently missing, should replace with local fallback or remove item.
+- Services pricing removed by user request; plan cards show features only.
+- `react-loading-skeleton` library was NOT installed; custom Skeleton component used instead.
+- `snarkdown` dependency still present but only used in Services if plan descriptions need markdown rendering.
+
+### Recommended next tasks
+- Verify all R2 images/videos load correctly in production (especially `foto-1.webp`)
+- Consider adding `width`/`height` attributes or aspect-ratio CSS to prevent layout shift on portfolio images
+- Test prefetch behavior on mobile (hover doesn't exist on touch devices)
+- Review SEO meta descriptions for Services and Portfolio pages
+- Consider adding a "Featured Work" or "Latest Reel" section to Home page
+
 ## 2026-04-29
 
 ### Repo state
