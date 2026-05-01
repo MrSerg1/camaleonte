@@ -136,12 +136,15 @@ ul {
   transition: color 0.3s ease;
 }
 .quote-button {
-  padding: 0.5rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 0.75rem;
+  padding: 0.625rem 1.75rem;
+  border: 2px solid var(--color-green-camaleonte);
+  border-radius: 6px;
+  font-size: 0.8125rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
+  color: var(--color-green-camaleonte);
+  background-color: transparent;
   transition: all 0.3s ease;
 }
 @media (max-width: 767px) {
@@ -162,7 +165,8 @@ ul {
     height: 2.5rem;
   }
   .quote-button {
-    font-size: 0.575rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.6875rem;
   }
 }
 
@@ -177,9 +181,8 @@ ul {
 }
 
 .quote-button:hover {
-  border-color: var(--color-green-camaleonte);
-  background-color: #604a98d0;
-  color: var(--color-green-camaleonte);
+  background-color: var(--color-green-camaleonte);
+  color: var(--color-white);
 }
 
 .mobile-menu-btn {
@@ -1703,6 +1706,7 @@ ul {
   background-position: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   object-fit: cover;
+  object-position: center 30%;
 }
 
 .mv-grid {
