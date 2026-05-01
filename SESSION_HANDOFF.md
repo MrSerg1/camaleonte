@@ -6,6 +6,57 @@
 - Record only verified facts that help the next session continue quickly.
 - Include: date, branch/push status, commands verified, important decisions, main changes, and next recommended tasks.
 
+## 2026-04-29
+
+### Repo state
+- Branch: `master`
+- Push status: pushed to `origin/master` at end of session
+
+### Commands verified
+- `pnpm lint`
+- `pnpm build`
+
+### Key decisions
+- Featured projects on Home use real portfolio images (`photo-editorial-1105.webp`, `foto-grupal-rvg.webp`) with glassmorphism-style hover (green glow from behind, other card dims).
+- Portfolio videos now stop 2 seconds before end (dynamic via `loadedmetadata`) instead of fixed 20s.
+- Portfolio videos have mute/unmute toggle button with SVG icons (volume-3 for muted, volume-4 for unmuted).
+- Contact page completely redesigned: no image hero, gradient background (black → grafito) + green radial glow across entire page, glassmorphism form card, gradient submit button, circular icon rows for contact methods.
+- AboutUs hero uses new `camaleonteUs.webp` image (converted from PNG, 225KB vs 2.4MB).
+- Instagram footer link opens in new tab (`target="_blank"`).
+
+### Main changes completed
+- `src/pages/Home.jsx`: replaced featured placeholders with real project cards (title, client, requirements, solution, image), scroll-to-top on portfolio navigation.
+- `src/pages/Portfolio.jsx`: added `useEffect` for scroll-to-top on mount.
+- `src/components/portfolio/PortfolioVideo.jsx`: dynamic stopAt (duration - 2s), mute/unmute toggle with SVG icons, `preload="auto"`.
+- `src/pages/Contact.jsx`: full redesign with glassmorphism card, gradient hero, framer-motion animations, restructured contact methods.
+- `src/pages/AboutUs.jsx`: uses `camaleonteUs.webp` as hero background.
+- `src/components/layout/Footer.jsx`: Instagram link opens in new tab.
+- `src/index.css`: extensive mobile responsive fixes (hero height, padding, z-index, footer grid, featured cards hover, contact glass styles, about section spacing).
+- `src/assets/camaleonteUs.webp`: new image (converted from PNG).
+- `src/assets/camaleonteUs.png`: deleted.
+
+### Commits created
+- `d558e78` `feat(home): add featured projects with portfolio content and hover effects`
+- `665fa15` `feat(portfolio): scroll to top on page mount`
+- `5151a32` `feat(portfolio): dynamic video stopAt and add mute/unmute toggle`
+- `1264f6a` `style(responsive): mobile layout fixes for hero, footer, featured cards and video controls`
+- `ad4ca7d` `fix(footer): open Instagram link in new tab`
+- `ae1cb4d` `feat(about): use camaleonteUs.webp as hero background`
+- `5a93a09` `style(about): mobile layout fixes - reduce hero height, section padding, and fix z-index`
+- `f8920c3` `feat(contact): redesign with glassmorphism, hero gradient, and premium UI`
+
+### Open context
+- Contact form is visual-only (no backend submission wired up).
+- WhatsApp number in footer/contact is placeholder (`+1 (234) 567-890`) — needs real number.
+- Email `info@camaleonte.com` may need verification.
+- Portfolio `stopAt` is now dynamic (duration - 2s) for all videos; no per-video override needed unless specific cut points are desired.
+
+### Recommended next tasks
+- Wire up contact form submission (API endpoint, email service, or form backend).
+- Update WhatsApp number and email with real contact info.
+- Review contact page on mobile to verify glassmorphism renders well on older browsers (fallback for `backdrop-filter`).
+- Consider adding more featured projects to Home if desired.
+
 ## 2026-04-28
 
 ### Repo state
