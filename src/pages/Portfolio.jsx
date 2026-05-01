@@ -331,9 +331,10 @@ const idxQuote = mobileItems.findIndex(
   mobileItems[idxCta],
 ];
 
-function PortfolioImage({ src, alt }) {
+function PortfolioImage({ src, alt, heroReady }) {
   const [loaded, setLoaded] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef(null);
   const imgDomRef = useRef(null);
 
@@ -344,7 +345,7 @@ function PortfolioImage({ src, alt }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldLoad(true);
+          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -354,6 +355,12 @@ function PortfolioImage({ src, alt }) {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (isVisible && heroReady) {
+      setShouldLoad(true);
+    }
+  }, [isVisible, heroReady]);
 
   useEffect(() => {
     if (!shouldLoad) return;
@@ -390,7 +397,7 @@ function PortfolioImage({ src, alt }) {
   );
 }
 
-function PortfolioCard({ item }) {
+function PortfolioCard({ item, heroReady }) {
   if (item.type === "intro") {
     return (
       <article className="portfolio-masonry-card">
@@ -455,18 +462,26 @@ function PortfolioCard({ item }) {
           <PortfolioVideo
             className="portfolio-masonry-media"
             src={item.src}
+            heroReady={heroReady}
           />
         </div>
       </article>
     );
   }
 
-  return <PortfolioImage src={item.src} alt={item.alt} />;
+  return <PortfolioImage src={item.src} alt={item.alt} heroReady={heroReady} />;
 }
 
 export function Portfolio() {
+  const [heroReady, setHeroReady] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroReady(true), 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -507,17 +522,17 @@ export function Portfolio() {
         <div className="portfolio-columns portfolio-columns--desktop">
           <div className="portfolio-column">
             {col1Items.map((item, i) => (
-              <PortfolioCard key={`c1-${i}`} item={item} />
+              <PortfolioCard heroReady={heroReady} key={`c1-${i}`} item={item} />
             ))}
           </div>
           <div className="portfolio-column">
             {col2Items.map((item, i) => (
-              <PortfolioCard key={`c2-${i}`} item={item} />
+              <PortfolioCard heroReady={heroReady} key={`c2-${i}`} item={item} />
             ))}
           </div>
           <div className="portfolio-column">
             {col3Items.map((item, i) => (
-              <PortfolioCard key={`c3-${i}`} item={item} />
+              <PortfolioCard heroReady={heroReady} key={`c3-${i}`} item={item} />
             ))}
           </div>
         </div>
@@ -525,7 +540,7 @@ export function Portfolio() {
         {/* Mobile: 2 columns via native CSS masonry */}
         <div className="portfolio-columns portfolio-columns--mobile">
           {mobileItems.map((item, i) => (
-            <PortfolioCard key={`m-${i}`} item={item} />
+            <PortfolioCard heroReady={heroReady} key={`m-${i}`} item={item} />
           ))}
         </div>
       </div>

@@ -16,13 +16,37 @@ const VolumeOnIcon = (
   </svg>
 );
 
-export function PortfolioVideo({ src, stopAt = 20, className }) {
+export function PortfolioVideo({ src, stopAt = 20, className, heroReady }) {
   const videoRef = useRef(null);
+  const wrapperRef = useRef(null);
   const [effectiveStopAt, setEffectiveStopAt] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const shouldLoad = isVisible && heroReady;
 
   useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -48,9 +72,11 @@ export function PortfolioVideo({ src, stopAt = 20, className }) {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
       clearTimeout(timeout);
     };
-  }, [src, stopAt]);
+  }, [shouldLoad, src, stopAt]);
 
   useEffect(() => {
+    if (!shouldLoad) return;
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -81,7 +107,7 @@ export function PortfolioVideo({ src, stopAt = 20, className }) {
       video.removeEventListener("timeupdate", handleTimeUpdate);
       observer.disconnect();
     };
-  }, [effectiveStopAt]);
+  }, [effectiveStopAt, shouldLoad]);
 
   const toggleMute = (e) => {
     e.preventDefault();
@@ -93,17 +119,17 @@ export function PortfolioVideo({ src, stopAt = 20, className }) {
   };
 
   return (
-    <div className="portfolio-video-wrapper">
+    <div className="portfolio-video-wrapper" ref={wrapperRef}>
       {!isLoaded && <Skeleton className="portfolio-skeleton portfolio-skeleton--video" />}
       <video
         ref={videoRef}
         className={className}
         muted
         playsInline
-        preload="auto"
+        preload="none"
         style={{ opacity: isLoaded ? 1 : 0 }}
       >
-        <source src={src} type="video/webm" />
+        {shouldLoad && <source src={src} type="video/webm" />}
       </video>
       <button
         className="portfolio-video-mute-btn"
